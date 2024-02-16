@@ -131,11 +131,10 @@ main p {
 /* about */
 #about {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-wrap: wrap;
     text-align: justify;
     height: auto;
+    justify-content: center;
 }
 #about h2 {
     font-size: 22px;
@@ -149,7 +148,6 @@ main p {
     overflow: hidden;
     margin: 20px;
     border: 10px solid var(--secondary-color);
-    text-align: center;
 }
 
 .team-member img {
@@ -157,6 +155,25 @@ main p {
     height: 100%;
     object-fit: cover;
     object-position: top;
+    transition: opacity 0.3s ease;
+}
+
+.team-member:hover img {
+    opacity: 0.7; 
+}
+
+.team-member::after {
+    content: attr(alt);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.team-member:hover::after {
+    opacity: 1;
 }
 
 .section {
