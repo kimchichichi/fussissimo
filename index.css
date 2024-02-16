@@ -1,6 +1,7 @@
 :root {
     --main-color: #FEFDF8;
     --secondary-color: #2263E7;
+    --extra-color:#a2a2c1;
   }
 * {
     margin: 0;
@@ -17,34 +18,16 @@ html {
 	font-family: Helvetica;
 	scroll-behavior: smooth;
 }
-
 a {
     color: var(--secondary-color);
     text-decoration: none;
-    display: inline-block;
-    position: relative; /* Added for positioning */
-    transition: transform 0.3s;
-}
+}  
 a:hover {
-    color: var(--second-color);
-    transform: skewX(15deg); 
-    font-style: italic; 
+    font-style: italic;
+    color: var(--extra-color);
 }
-a::after {
-    content: '\2192'; /* Unicode character for right arrow */
-    position: absolute;
-    top: 50%;
-    right: -100px; /* Adjust distance from text */
-    transform: translateY(-50%) scale(0); /* Initially hidden */
-    color: rgba(240, 248, 255, 0.5); /* Adjust arrow color */
-    font-family: "Font Awesome"; /* Assuming you're using Font Awesome for icons */
-    z-index: -1;
-    transition: transform 0.3s ease, color 0.3s ease; /* Added transition for smooth animation */
-}
-
-a:hover::after {
-    transform: translateY(-50%) scale(1); /* Show arrow on hover */
-    color: var(--secondary-color);
+span {
+    color: var(--extra-color);
 }
 body {
     background-color: var(--main-color);
@@ -60,7 +43,6 @@ header {
 }
 .logo {
     font-size: 40px;
-    text-transform: uppercase;
     letter-spacing: 0.1rem;
 }
 .logo p {
@@ -77,10 +59,6 @@ header {
     letter-spacing: 0.1rem;
     font-weight: lighter;
     font-size: 15px;
-}
-
-.music-player {
-    padding-top: 10px;
 }
 
 main {
@@ -111,6 +89,44 @@ main p {
     width: 2px;
     background-color: var(--secondary-color);
 }
+.main a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    display: inline-block;
+    position: relative; /* Added for positioning */
+    transition: transform 0.3s;
+}
+.main a:hover {
+    color: var(--second-color);
+    transform: skewX(15deg); 
+    font-style: italic; 
+}
+.main a::after {
+    content: '\2192'; /* Unicode character for right arrow */
+    position: absolute;
+    top: 50%;
+    right: -100px; /* Adjust distance from text */
+    transform: translateY(-50%) scale(0); /* Initially hidden */
+    color: rgba(240, 248, 255, 0.5); /* Adjust arrow color */
+    font-family: "Font Awesome"; /* Assuming you're using Font Awesome for icons */
+    z-index: -1;
+    transition: transform 0.3s ease, color 0.3s ease; /* Added transition for smooth animation */
+}
+
+.main a:hover::after {
+    transform: translateY(-50%) scale(1); /* Show arrow on hover */
+    color: var(--secondary-color);
+}
+
+.title{
+    writing-mode: vertical-lr; 
+    text-orientation: mixed; 
+    transform: rotate(180deg);
+    font-size: 80px;
+    text-transform: uppercase;
+    margin-right: 50px;
+    margin-bottom: 50px; /**/
+}
 
 /* about */
 #about {
@@ -138,4 +154,35 @@ main p {
     height: 100%;
     object-fit: cover;
 }
+/* tour */
+#tour {
+    width: 100%;
+	height: 100vh;
+    display: flex;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+#tour ul li {
+    border-bottom: 2px solid var(--secondary-color);
+    padding: 20px;
+    padding-bottom: 20px;
+}
+.uhr {
+    font-weight: lighter;
+    font-size: 1.2rem;
+}
+.datum {
+    font-size: 3rem;
+}
 
+#tour img {
+    width: 600px;
+    margin-left: 40px;
+    padding-bottom: 50px; /**/
+}
+footer {
+    font-weight: lighter;
+    font-size: 15px;
+    text-align: right;
+    padding: 20px;
+}
