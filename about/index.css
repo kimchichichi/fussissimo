@@ -1,0 +1,93 @@
+:root {
+    --main-color: #FEFDF8;
+    --secondary-color: #2263E7;
+  }
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+*::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+}
+html {
+	font-family: Helvetica;
+	scroll-behavior: smooth;
+}
+
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+a:hover {
+    color: var(--second-color);
+    transform: skewX(15deg); 
+    font-style: italic; 
+}
+
+body {
+    background-color: var(--main-color);
+    color: var(--secondary-color);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+header {
+    padding: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    font-size: 40px;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+}
+.logo p {
+    font-size: 15px;
+    letter-spacing: normal;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+.header ul {
+    padding: 20px;
+    letter-spacing: 0.1rem;
+    font-weight: lighter;
+    font-size: 15px;
+}
+
+#profile {
+    display: flex;
+    text-align: justify;
+    padding-bottom: 50px;
+}
+#profile img {
+    overflow: hidden;
+    margin: 20px;
+    border: 10px solid var(--secondary-color);
+    border-radius: 50%;
+
+}
+.icon-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.icon-container i {
+    font-size: 20px; 
+    color: var(--secondary-color); 
+    transition: color 0.3s; 
+    padding: 20px;
+}
+
+.icon-container i:hover {
+    font-style: italic;
+    cursor: pointer;
+}
