@@ -167,6 +167,9 @@ main p {
     padding: 20px;
     padding-bottom: 20px;
 }
+.section ul li:last-child {
+    border-bottom: none;
+}
 /* tour */
 .uhr {
     font-weight: lighter;
