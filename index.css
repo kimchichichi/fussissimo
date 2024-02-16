@@ -154,19 +154,20 @@ main p {
     height: 100%;
     object-fit: cover;
 }
-/* tour */
-#tour {
+
+section {
     width: 100%;
 	height: 100vh;
     display: flex;
     font-size: 1.4rem;
     font-weight: bold;
 }
-#tour ul li {
+section ul li {
     border-bottom: 2px solid var(--secondary-color);
     padding: 20px;
     padding-bottom: 20px;
 }
+/* tour */
 .uhr {
     font-weight: lighter;
     font-size: 1.2rem;
@@ -180,6 +181,27 @@ main p {
     margin-left: 40px;
     padding-bottom: 50px; /**/
 }
+#listen li:hover {
+    cursor: pointer;
+    color: var(--extra-color);
+}
+#iframe-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 100%;
+    border: 10px solid var(--secondary-color);
+    display: none;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+
+}
+
 footer {
     font-weight: lighter;
     font-size: 15px;
