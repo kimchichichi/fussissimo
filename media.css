@@ -9,6 +9,21 @@
     body {
         max-width: 990px;
     }
+    .team-member {
+        width: 270px;
+        height: 270px;
+    }
+    #tour {
+        display: flex;
+        flex-direction: column;
+    }
+    #tour .title {
+        display: none;
+    }
+    #tour img {
+        width: 900px;
+        padding-bottom: 100px; /**/
+    }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -23,9 +38,25 @@
         display: none;
     }
     #iframe-container {
-        top: 1100px;
-        right: 0;
-        width: 100%;
+        right: 20px;
+        width: 40%;
+        height: 60%;
+    }
+    .team-member {
+        width: 230px;
+        height: 230px;
+        margin: 10px;
+    }
+    #tour {
+        display: flex;
+        flex-direction: column;
+    }
+    #tour .title {
+        display: none;
+    }
+    #tour img {
+        width: 760px;
+        padding-bottom: 100px; /**/
     }
 
 }
@@ -48,14 +79,25 @@
     .main a::after {
         display: none;
     }
-
-
     #iframe-container {
         top: 1200px;
         right: 0px;
         width: 100%;
         height: 50%;
     }
+    #tour {
+        display: flex;
+        flex-direction: column;
+    }
+    #tour .title {
+        display: none;
+    }
+    #tour img {
+        width: 480px;
+        margin-left: 20px;
+        padding-bottom: 100px; /**/
+    }
+
 
 }
 @media only  screen and (min-width:320px)and (max-width: 479px) {

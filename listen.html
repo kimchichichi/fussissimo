@@ -34,6 +34,8 @@
         <li data-src="https://www.example.com/iframe6">Ani Suni</li>
         <li data-src="https://www.example.com/iframe6">Si tu savais</li>
         <li data-src="https://www.example.com/iframe6">Tweety goes bad</li>
+        <li data-src="https://www.example.com/iframe6">Puppet Bounce</li>
+        <li data-src="https://www.example.com/iframe6">Masir</li>
 
     </ul>
 </section>
@@ -48,18 +50,24 @@
     var iframe = document.getElementById('iframe');
     var headerParagraph = document.querySelector('.header p');
 
-listItems.forEach(function(item) {
-    item.addEventListener('click', function() {
-        var src = item.getAttribute('data-src');
-        var trackName = item.innerText; // Get the text content of the clicked list item
-        iframe.src = src;
-        iframeContainer.style.display = 'block';
-        headerParagraph.textContent = "/ " + trackName; // Append '/' before the track name
+    listItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+            var src = item.getAttribute('data-src');
+            var trackName = item.innerText; // Get the text content of the clicked list item
+
+            // Extract the video ID from the data-src attribute
+            var videoId = src.split('/').pop().split('?')[0];
+
+            // Construct the YouTube embed URL
+            var youtubeEmbedUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
+
+            iframe.src = youtubeEmbedUrl;
+            iframeContainer.style.display = 'block';
+            headerParagraph.textContent = "/ " + trackName; // Append '/' before the track name
+        });
     });
-});
-
-
 </script>
+
 
 </body>
 </html>
