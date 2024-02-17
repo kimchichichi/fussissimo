@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUSSISSIMO</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1><a href="index">FUSSi<br>SSiMO</a></h1>
+            <p>Gypsy | Ethno | Jazz</p>
+        </div>
+        <div class="header">
+            <h2>Galerie</h2>
+            <p><a class="download" href="image/image.zip" download="image">/ download</a></p>
+            <p class="copyright">© Kat Schulze</p>
+        </div>
+    </header>
+    <section id="galerie" class="section">
+        <h1 class="title">GALERIE</h1>
+        <div class="galerie">
+            <img class="group" src="image/fussissimo.webp" alt="fussissimo" onclick="openModal('image/fussissimo.webp')">
+            <img src="image/colorRehan.webp" alt="rehan syed" onclick="openModal('image/colorRehan.webp')">
+            <img src="image/colorHarald.webp" alt="harald oeler" onclick="openModal('image/colorHarald.webp')">
+            <img src="image/colorSimon.webp" alt="simon ort" onclick="openModal('image/colorSimon.webp')">
+            <img src="image/Rehan.webp" alt="rehan syed" onclick="openModal('image/Rehan.webp')">
+            <img src="image/Harald.webp" alt="harald oeler" onclick="openModal('image/Harald.webp')">
+            <img src="image/Simon.webp" alt="simon ort" onclick="openModal('image/Simon.webp')">
+        </div>
+    </section>
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="modal image">
+        </div>
+        <button onclick="prevImage()">Previous</button>
+        <button onclick="nextImage()">Next</button>
+    </div>
+
+    <script>
+        let modal = document.getElementById("myModal");
+        let modalImg = document.getElementById("modalImage");
+        let images = document.querySelectorAll(".galerie img");
+        let currentIndex;
+
+        function openModal(src) {
+            modal.style.display = "block";
+            modalImg.src = src;
+            currentIndex = Array.from(images).findIndex(img => img.src === src);
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            modalImg.src = images[currentIndex].src;
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            modalImg.src = images[currentIndex].src;
+        }
+
+        modal.addEventListener("click", function(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

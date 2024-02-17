@@ -42,7 +42,6 @@ header {
 }
 .logo {
     font-size: 40px;
-    text-transform: uppercase;
     letter-spacing: 0.1rem;
 }
 .logo p {
@@ -51,24 +50,18 @@ header {
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
+    font-size: 50px;
 }
-.header ul {
-    padding: 20px;
-    letter-spacing: 0.1rem;
-    font-weight: lighter;
-    font-size: 15px;
-}
+
 
 #profile {
     display: flex;
     text-align: justify;
-    padding-bottom: 50px;
+    padding-bottom: 100px;
 }
 #profile img {
     overflow: hidden;
-    margin: 20px;
+    margin: 50px;
     border: 10px solid var(--secondary-color);
     border-radius: 50%;
 

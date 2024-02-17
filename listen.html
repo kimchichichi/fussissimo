@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FUSSISSIMO</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="media.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 
 </head>
@@ -15,7 +16,8 @@
             <p>Gypsy | Ethno | Jazz</p>
         </div>
         <div class="header">
-            listen
+            <h2>LISTEN</h2>
+            <p>/ live in der musik-butik</p>
         </div>
     </header>
     <section id="listen" class="section">
@@ -41,28 +43,22 @@
 </div>
 
 <script>
-    // Get the list items
     var listItems = document.querySelectorAll('#listen ul li');
-    
-    // Get the iframe container
     var iframeContainer = document.getElementById('iframe-container');
-    
-    // Get the iframe
     var iframe = document.getElementById('iframe');
-    
-    // Add click event listeners to each list item
-    listItems.forEach(function(item) {
-        item.addEventListener('click', function() {
-            // Get the source from the data-src attribute
-            var src = item.getAttribute('data-src');
-            
-            // Set the src attribute of the iframe
-            iframe.src = src;
-            
-            // Show the iframe container
-            iframeContainer.style.display = 'block';
-        });
+    var headerParagraph = document.querySelector('.header p');
+
+listItems.forEach(function(item) {
+    item.addEventListener('click', function() {
+        var src = item.getAttribute('data-src');
+        var trackName = item.innerText; // Get the text content of the clicked list item
+        iframe.src = src;
+        iframeContainer.style.display = 'block';
+        headerParagraph.textContent = "/ " + trackName; // Append '/' before the track name
     });
+});
+
+
 </script>
 
 </body>
