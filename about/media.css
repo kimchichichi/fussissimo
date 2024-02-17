@@ -35,8 +35,9 @@
         align-items: start;
     }
     .header {
-        font-size: 40px;
+        font-size: 30px;
         display: flex;
+        flex-direction: column;
     }
     #profile {
         display: flex;
