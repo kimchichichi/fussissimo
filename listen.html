@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FUSSISSIMO</title>
+    <link rel="icon" href="image/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="media.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
@@ -36,9 +37,9 @@
         <li data-src="https://www.example.com/iframe6">Tweety goes bad</li>
         <li data-src="https://www.example.com/iframe6">Puppet Bounce</li>
         <li data-src="https://www.example.com/iframe6">Masir</li>
-
     </ul>
 </section>
+<button id="scrollToTopBtn" onclick="scrollToTop()">Up</button>
 
 <div id="iframe-container">
     <iframe id="iframe" src=""></iframe>
@@ -64,8 +65,17 @@
             iframe.src = youtubeEmbedUrl;
             iframeContainer.style.display = 'block';
             headerParagraph.textContent = "/ " + trackName; // Append '/' before the track name
+      
+            iframeContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     });
+
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
 </script>
 
 

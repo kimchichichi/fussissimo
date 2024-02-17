@@ -55,7 +55,8 @@
         display: none;
     }
     #tour img {
-        width: 760px;
+        width: 740px;
+        margin-left: 0;
         padding-bottom: 100px; /**/
     }
 
@@ -83,7 +84,6 @@
         top: 1200px;
         right: 0px;
         width: 100%;
-        height: 50%;
     }
     #tour {
         display: flex;
