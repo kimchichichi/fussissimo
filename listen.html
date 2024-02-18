@@ -25,7 +25,7 @@
     <h1 class="title">LISTEN LISTEN</h1>
     <ul>
         <li data-src="https://www.youtube.com/embed/j1U5qDVxmUQ?si=jJ92CoidTYVswr2F">Bossa 9</li>
-        <li data-src="https://www.youtube.com/embed/VIDEO_ID_2">Für Mara</li>
+        <li data-src="https://www.youtube.com/embed/0TYQhb9glyc?si=CyWZ51OBhb1JS9tx">Für Mara</li>
         <li data-src="https://www.example.com/iframe3">Aman</li>
         <li data-src="https://www.example.com/iframe4">Rehanistan</li>
         <li data-src="https://www.example.com/iframe5">Poinciana</li>
@@ -44,12 +44,17 @@
 <div id="iframe-container">
     <iframe id="iframe" src=""></iframe>
 </div>
-
 <script>
     var listItems = document.querySelectorAll('#listen ul li');
     var iframeContainer = document.getElementById('iframe-container');
     var iframe = document.getElementById('iframe');
     var headerParagraph = document.querySelector('.header p');
+
+    // Default image URL
+    var defaultImageUrl = '';
+    
+    // Set default image in the iframe
+    iframe.src = defaultImageUrl;
 
     listItems.forEach(function(item) {
         item.addEventListener('click', function() {
@@ -65,8 +70,11 @@
             iframe.src = youtubeEmbedUrl;
             iframeContainer.style.display = 'block';
             headerParagraph.textContent = "/ " + trackName; // Append '/' before the track name
-      
-            iframeContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // Check if viewport width is at most 991px before scrolling
+            if (window.innerWidth <= 991) {
+                iframeContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         });
     });
 
@@ -77,7 +85,5 @@
         });
     }
 </script>
-
-
 </body>
 </html>

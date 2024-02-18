@@ -252,6 +252,7 @@ iframe {
     height: 100%;
     border: none;
 }
+
 #scrollToTopBtn {
     position: fixed;
     bottom: 20px;
@@ -276,6 +277,9 @@ iframe {
 .galerie .group {
     width:970px;
 }
+.galerie img:hover {
+    cursor: pointer;
+}
 .modal {
     display: none;
     position: fixed;
@@ -299,6 +303,7 @@ iframe {
     display: block;
     margin: auto;
 }
+
 .close {
     position: absolute;
     top: 10px;
@@ -309,9 +314,9 @@ iframe {
     cursor: pointer;
 }
 
-footer {
+.footer {
     font-weight: lighter;
     font-size: 15px;
-    text-align: right;
     padding: 20px;
+    display: inline-flex;
 }
