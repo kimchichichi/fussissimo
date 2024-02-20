@@ -34,6 +34,7 @@ body {
     color: var(--secondary-color);
     max-width: 1200px;
     margin: 0 auto;
+    height:auto;
 }
 header {
     padding: 60px;
@@ -76,13 +77,27 @@ header {
 main {
     display: flex;
     flex-wrap: wrap;
+    height: 100%;
+}
+main::after {
+    content: ""; /* Create an empty content for the ::after pseudo-element */
+    background-image: url('image/fussissimo.webp'); /* Background image */
+    position: absolute; /* Position it absolutely */
+    top: 0;
+    left: 0;
+    width: 100%; /* Cover the entire body */
+    height: 100%;
+    z-index: -1; /* Place it behind the content */
+    opacity: 0.2; /* Opacity of the background image */
+    background-size: cover; /* This property ensures that the background image covers the entire element */
+    background-repeat: no-repeat; 
 }
 main p {
     font-size: 15px;
 }
 .main {
     width: 50%;
-    height: 300px;
+    height: 270px;
     padding-top: 10px;
     padding-left: 15px;
     font-size: 70px;
