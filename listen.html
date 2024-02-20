@@ -7,7 +7,8 @@
     <link rel="icon" href="image/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="media.css">
-    <!-- You may include additional stylesheets or libraries here if needed -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
 </head>
 <body>
     <header>
@@ -21,48 +22,88 @@
         </div>
     </header>
     <section id="listen" class="section">
-        <h1 class="title">LISTEN LISTEN</h1>
-        <ul>
-            <!-- Each list item will correspond to a track -->
-            <li id="Bossa9">Bossa 9</li>
-            <li id="FürMara">Für Mara</li>
-            <li id="Aman">Aman</li>
-            <li id="Rehanistan">Rehanistan</li>
-            <li id="Poinciana">Poinciana</li>
-            <li id="Fussissimo">Fussissimo</li>
-            <li id="GreetingsfromMars">Greetings from Mars</li>
-            <li id="MadeInFrance">Made In France</li>
-            <li id="AniSuni">Ani Suni</li>
-            <li id="Situsavais">Si tu savais</li>
-            <li id="Tweetygoesbad">Tweety goes bad</li>
-            <li id="PuppetBounce">Puppet Bounce</li>
-            <li id="Masir">Masir</li>
-        </ul>
-    </section>
-    <!-- Your video player container -->
-    <div id="video-player-container">
-        <iframe id="video-player" src="" allowfullscreen></iframe>
-    </div>
+    <h1 class="title">LISTEN LISTEN</h1>
+    <ul>
+        <li id="Bossa9" data-src="https://www.youtube.com/embed/j1U5qDVxmUQ?si=jJ92CoidTYVswr2F">Bossa 9</li>
+        <li id="FürMara" data-src="https://www.youtube.com/embed/0TYQhb9glyc?si=CyWZ51OBhb1JS9tx">Für Mara</li>
+        <li id="Aman" data-src="https://www.youtube.com/embed/WkxEwOPyBnw?si=YLUGdXq7obswHsmz">Aman</li>
+        <li id="Rehanistan" data-src="https://www.example.com/iframe4">Rehanistan</li>
+        <li id="Poinciana" data-src="https://www.example.com/iframe5">Poinciana</li>
+        <li id="Fussissimo" data-src="https://www.example.com/iframe6">Fussissimo</li>
+        <li id="GreetingsfromMars" data-src="https://www.example.com/iframe6">Greetings from Mars</li>
+        <li id="MadeInFrance" data-src="https://www.example.com/iframe6">Made In France</li>
+        <li id="AniSuni" data-src="https://www.example.com/iframe6">Ani Suni</li>
+        <li id="Situsavais" data-src="https://www.example.com/iframe6">Si tu savais</li>
+        <li id="Tweetygoesbad" data-src="https://www.example.com/iframe6">Tweety goes bad</li>
+        <li id="PuppetBounce" data-src="https://www.example.com/iframe6">Puppet Bounce</li>
+        <li id="Masir" data-src="https://www.example.com/iframe6">Masir</li>
+    </ul>
     
-    <!-- Your additional HTML content goes here -->
+</section>
+<button id="scrollToTopBtn" onclick="scrollToTop()">Up</button>
 
-    <!-- JavaScript to handle playing the correct track -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var hash = window.location.hash.substring(1); // Get the hash value from the URL
-            if (hash) {
-                var trackElement = document.getElementById(hash); // Find the corresponding list item by ID
-                if (trackElement) {
-                    // Get the data-src attribute of the corresponding list item
-                    var src = trackElement.getAttribute('data-src');
-                    if (src) {
-                        // Update the source of the video player with the data-src
-                        var videoPlayer = document.getElementById('video-player');
-                        videoPlayer.src = src;
-                    }
-                }
+<div id="iframe-container">
+    <iframe id="iframe" src=""></iframe>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var hash = window.location.hash.substring(1); // Get the hash value from the URL
+
+    if (hash) {
+        var trackElement = document.getElementById(hash); // Find the corresponding list item by ID
+
+        if (trackElement) {
+            // Get the data-src attribute of the corresponding list item
+            var src = trackElement.getAttribute('data-src');
+
+            if (src) {
+                // Update the source of the iframe with the data-src
+                var iframe = document.getElementById('iframe');
+                iframe.src = src;
             }
-        });
-    </script>
+        }
+    }
+});
+
+var listItems = document.querySelectorAll('#listen ul li');
+var iframeContainer = document.getElementById('iframe-container');
+var iframe = document.getElementById('iframe');
+var headerParagraph = document.querySelector('.header p');
+
+// Default image URL
+var defaultImageUrl = '';
+
+// Set default image in the iframe
+iframe.src = defaultImageUrl;
+
+listItems.forEach(function(item) {
+    item.addEventListener('click', function() {
+        var src = item.getAttribute('data-src');
+        var trackName = item.innerText; // Get the text content of the clicked list item
+
+        // Extract the video ID from the data-src attribute
+        var videoId = src.split('/').pop().split('?')[0];
+
+        // Construct the YouTube embed URL
+        var youtubeEmbedUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
+
+        iframe.src = youtubeEmbedUrl;
+        iframeContainer.style.display = 'block';
+        headerParagraph.textContent = "/ " + trackName; // Append '/' before the track name
+
+        // Check if viewport width is at most 991px before scrolling
+        if (window.innerWidth <= 991) {
+            iframeContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+</script>
 </body>
 </html>
