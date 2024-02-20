@@ -84,6 +84,23 @@
             behavior: 'smooth'
         });
     }
+
+    document.addEventListener("DOMContentLoaded", function() {
+    var hash = window.location.hash.substring(1); // Remove the '#' character from the hash
+
+    if (hash) {
+        var listItem = document.querySelector('li[data-src*="' + hash + '"]');
+        if (listItem) {
+            var src = listItem.getAttribute('data-src');
+            var videoId = src.split('/').pop().split('?')[0];
+            var youtubeEmbedUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
+            var iframe = document.getElementById('iframe');
+            iframe.src = youtubeEmbedUrl;
+        }
+    }
+});
+
+
 </script>
 </body>
 </html>
