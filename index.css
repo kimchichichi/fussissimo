@@ -14,7 +14,6 @@
   --blue: #003da8;
   --blue-soft: rgba(0, 61, 168, 0.12);
   --muted: rgba(0, 61, 168, 0.72);
-  --yellow: #ffc107;
   --line: #003da8;
   --focus: #003da8;
   --font: "Montserrat", Helvetica, Arial, sans-serif;
@@ -193,7 +192,7 @@ a:focus:not(:focus-visible) {
 
 .nav-link[aria-current="page"]::after {
   transform: scaleX(1);
-  background: var(--yellow);
+  background: var(--blue);
   height: 2px;
 }
 
@@ -204,7 +203,7 @@ a:focus:not(:focus-visible) {
   height: 0.35rem;
   margin-right: 0.45rem;
   border-radius: 50%;
-  background: var(--yellow);
+  background: var(--blue);
   vertical-align: 0.1em;
 }
 
@@ -1136,7 +1135,7 @@ a.meta-card:hover {
 .about-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: 1.15rem;
 }
 
 .member-card {
@@ -1155,7 +1154,7 @@ a.meta-card:hover {
 
 .member-card .portrait {
   position: relative;
-  width: min(280px, 100%);
+  width: min(340px, 100%);
   aspect-ratio: 1;
   margin: 0 auto 0.85rem;
   border-radius: 50%;
@@ -1745,7 +1744,7 @@ body.modal-open {
 .contact-main {
   display: grid;
   gap: 1.35rem;
-  max-width: 28rem;
+  max-width: 32rem;
 }
 
 .contact-lead {
@@ -2229,6 +2228,7 @@ html:has(body.home) {
 }
 
 html:has(body.home.is-open) {
+  height: auto;
   overflow: auto;
 }
 
@@ -2363,8 +2363,7 @@ body.home.is-morphing .trio-logo {
 }
 
 body.home .stack-btn:focus-visible {
-  outline: 2px solid var(--blue);
-  outline-offset: 8px;
+  outline: none;
 }
 
 body.home .stack-logo {
@@ -2483,9 +2482,7 @@ body.home .screen-trio {
   right: auto;
   width: min(720px, 100%);
   transform: translateX(-50%) translateY(28px) scale(0.97);
-  overflow-y: auto;
-  max-height: 100dvh;
-  -webkit-overflow-scrolling: touch;
+  overflow: visible;
 }
 
 body.home .back-cover {
@@ -2518,6 +2515,8 @@ body.home .trio-logo {
   width: min(72vw, 300px);
   max-width: calc(100% - 6.5rem);
   margin: 0 auto 0.85rem;
+  /* Room for Glassure ascenders / decorative F tips / baseline feet */
+  padding-block: 0.12em;
   font-family: var(--display);
   font-size: clamp(1.85rem, 9vw, 4.2rem);
   line-height: 0.88;
@@ -2530,7 +2529,7 @@ body.home .trio-logo {
   font-feature-settings: "kern" 1, "liga" 1, "dlig" 1, "titl" 1;
   user-select: none;
   white-space: nowrap;
-  overflow: hidden;
+  overflow: visible;
 }
 
 body.home .trio-photo {
@@ -2541,8 +2540,8 @@ body.home .trio-photo {
 
 body.home .trio-photo img {
   width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   filter: grayscale(1) contrast(1.05);
 }
 
@@ -2666,6 +2665,14 @@ body.home.is-open .screen-cover {
 }
 
 body.home.is-open .screen-trio {
+  /* In-flow so tall content grows the page; body/html scroll when .is-open */
+  position: relative;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  height: auto;
+  max-height: none;
+  overflow: visible;
   opacity: 1;
   transform: translateX(-50%) translateY(0) scale(1);
   filter: blur(0);
@@ -2739,8 +2746,13 @@ body.home.is-open .cover-nav .nav-toggle {
   }
 
   body.home .trio-photo img {
-    aspect-ratio: 16 / 10;
-    max-height: min(36vh, 260px);
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: min(50vh, 420px);
+    margin-inline: auto;
+    object-fit: contain;
   }
 
   body.home .back-cover {
@@ -2767,7 +2779,7 @@ body.home.is-open .cover-nav .nav-toggle {
   }
 
   body.home.is-open .screen-trio {
-    transform: none !important;
+    transform: translateX(-50%) !important;
     filter: none !important;
   }
 

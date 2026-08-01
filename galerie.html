@@ -11,8 +11,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="index.css?v=20260801uxall" />
-  <link rel="stylesheet" href="media.css?v=20260801uxall" />
+  <link rel="stylesheet" href="index.css?v=20260801navfix" />
+  <link rel="stylesheet" href="media.css?v=20260801navfix" />
 </head>
 <body>
   <div class="topbar">
@@ -32,12 +32,12 @@
         <a class="nav-link" href="index.html#trio"><span class="nav-num" aria-hidden="true">01</span><span class="nav-label">Trio</span></a>
         <a class="nav-link" href="tour.html"><span class="nav-num" aria-hidden="true">02</span><span class="nav-label">Konzerte</span></a>
         <a class="nav-link" href="listen.html"><span class="nav-num" aria-hidden="true">03</span><span class="nav-label">Playlist</span></a>
-        <a class="nav-link" href="kontakt.html"><span class="nav-num" aria-hidden="true">04</span><span class="nav-label">Kontakt</span></a>
       </div>
       <div class="nav-sub" aria-label="Weitere Seiten">
         <a class="nav-link nav-link--sub" href="about.html"><span class="nav-label">Musiker</span></a>
         <a class="nav-link nav-link--sub" href="galerie.html" aria-current="page"><span class="nav-label">Galerie</span></a>
       </div>
+      <a class="nav-link" href="kontakt.html"><span class="nav-num" aria-hidden="true">04</span><span class="nav-label">Kontakt</span></a>
       <div class="nav-foot">
         <a class="nav-next" href="tour.html">
           <span class="nav-next-kicker">Nächstes Konzert</span>
@@ -61,68 +61,183 @@
 
   <section class="section">
     <div class="galerie">
-      <img class="group" src="image/fussissimo.webp" alt="Trio Fussissimo" data-full="image/fussissimo.webp" />
-      <img src="image/colorRehan.webp" alt="Rehan Syed" data-full="image/colorRehan.webp" />
-      <img src="image/colorHarald.webp" alt="Harald Oeler" data-full="image/colorHarald.webp" />
-      <img src="image/colorSimon.webp" alt="Simon Ort" data-full="image/colorSimon.webp" />
-      <img src="image/Rehan.webp" alt="Rehan Syed" data-full="image/Rehan.webp" />
-      <img src="image/Harald.webp" alt="Harald Oeler" data-full="image/Harald.webp" />
-      <img src="image/Simon.webp" alt="Simon Ort" data-full="image/Simon.webp" />
+      <button type="button" class="galerie-item galerie-item--group" aria-label="Trio Fussissimo — Bild vergrößern">
+        <img class="group" src="image/thumbs/fussissimo.webp" alt="Trio Fussissimo" width="1400" height="933" data-full="image/fussissimo.webp" loading="eager" />
+      </button>
+      <button type="button" class="galerie-item" aria-label="Rehan Syed — Bild vergrößern">
+        <img src="image/thumbs/colorRehan.webp" alt="Rehan Syed" width="600" height="900" data-full="image/colorRehan.webp" loading="lazy" />
+      </button>
+      <button type="button" class="galerie-item" aria-label="Harald Oeler — Bild vergrößern">
+        <img src="image/thumbs/colorHarald.webp" alt="Harald Oeler" width="600" height="900" data-full="image/colorHarald.webp" loading="lazy" />
+      </button>
+      <button type="button" class="galerie-item" aria-label="Simon Ort — Bild vergrößern">
+        <img src="image/thumbs/colorSimon.webp" alt="Simon Ort" width="600" height="900" data-full="image/colorSimon.webp" loading="lazy" />
+      </button>
+      <button type="button" class="galerie-item" aria-label="Rehan Syed (Schwarzweiß) — Bild vergrößern">
+        <img src="image/thumbs/Rehan.webp" alt="Rehan Syed" width="600" height="900" data-full="image/Rehan.webp" loading="lazy" />
+      </button>
+      <button type="button" class="galerie-item" aria-label="Harald Oeler (Schwarzweiß) — Bild vergrößern">
+        <img src="image/thumbs/Harald.webp" alt="Harald Oeler" width="600" height="900" data-full="image/Harald.webp" loading="lazy" />
+      </button>
+      <button type="button" class="galerie-item" aria-label="Simon Ort (Schwarzweiß) — Bild vergrößern">
+        <img src="image/thumbs/Simon.webp" alt="Simon Ort" width="600" height="900" data-full="image/Simon.webp" loading="lazy" />
+      </button>
     </div>
   </section>
 
-  <div id="myModal" class="modal" role="dialog" aria-modal="true" aria-label="Bildansicht">
+  <div id="myModal" class="modal" role="dialog" aria-modal="true" aria-label="Bildansicht" hidden>
     <button type="button" class="close" aria-label="Schließen"><i data-lucide="x"></i></button>
     <div class="modal-content"><img id="modalImage" alt="" /></div>
+    <div class="modal-meta">
+      <span id="modalCaption"></span>
+      <span class="modal-credit">© Kat Schulze</span>
+      <span id="modalCounter"></span>
+      <a class="modal-download" id="modalDownload" href="#" download>Download</a>
+    </div>
     <div class="modal-nav">
       <button type="button" class="btn btn-with-icon" id="prevBtn"><i data-lucide="chevron-left"></i><span>Zurück</span></button>
       <button type="button" class="btn btn-with-icon" id="nextBtn"><span>Weiter</span><i data-lucide="chevron-right"></i></button>
     </div>
   </div>
 
-
+  <footer class="site-footer">
+    <div class="booking-strip">
+      <div>
+        <p class="pitch">Gypsy-Ethno-Jazz Trio · Buchung</p>
+        <p class="contacts">
+          <a href="tel:+491776007095">+49 177 6007095</a> ·
+          <a href="mailto:info@rehansyed.de">info@rehansyed.de</a> ·
+          <a href="https://www.instagram.com/fussissimo" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </p>
+      </div>
+      <a class="btn" href="kontakt.html">Kontakt</a>
+    </div>
+    <p class="footer-meta">
+      <a class="icon-link" href="index.html#trio"><i data-lucide="arrow-left"></i><span>Trio</span></a> · <a href="about.html">Musiker</a>
+    </p>
+  </footer>
 
   <script>
     const modal = document.getElementById("myModal");
     const modalImg = document.getElementById("modalImage");
-    const images = Array.from(document.querySelectorAll(".galerie img"));
+    const modalCaption = document.getElementById("modalCaption");
+    const modalCounter = document.getElementById("modalCounter");
+    const modalDownload = document.getElementById("modalDownload");
+    const closeBtn = document.querySelector(".close");
+    const items = Array.from(document.querySelectorAll(".galerie-item"));
+    const pageChrome = document.querySelector(".topbar");
+    const pageMain = Array.from(document.querySelectorAll("header.page-header, section.section, footer.site-footer"));
     let currentIndex = 0;
     let touchX = null;
+    let lastFocus = null;
+
+    function focusables() {
+      return Array.from(
+        modal.querySelectorAll('button, [href], [tabindex]:not([tabindex="-1"])')
+      ).filter((el) => !el.hasAttribute("disabled"));
+    }
+
+    function setBackgroundInert(on) {
+      const targets = [pageChrome].concat(pageMain).filter(Boolean);
+      targets.forEach((el) => {
+        if (on) {
+          el.setAttribute("inert", "");
+          el.setAttribute("aria-hidden", "true");
+        } else {
+          el.removeAttribute("inert");
+          el.removeAttribute("aria-hidden");
+        }
+      });
+    }
+
+    function showImage(index) {
+      currentIndex = index;
+      const btn = items[currentIndex];
+      const img = btn.querySelector("img");
+      const full = img.dataset.full || img.src;
+      modalImg.src = full;
+      modalImg.alt = img.alt || "";
+      modalCaption.textContent = img.alt || "";
+      modalCounter.textContent = (currentIndex + 1) + " / " + items.length;
+      modalDownload.href = full;
+      const file = full.split("/").pop() || "fussissimo.webp";
+      modalDownload.setAttribute("download", file);
+    }
 
     function openModal(index) {
-      currentIndex = index;
-      modalImg.src = images[currentIndex].dataset.full;
-      modalImg.alt = images[currentIndex].alt;
+      lastFocus = document.activeElement;
+      showImage(index);
+      modal.hidden = false;
       modal.classList.add("open");
-    }
-    function closeModal() {
-      modal.classList.remove("open");
-      modalImg.removeAttribute("src");
-      modalImg.alt = "";
+      document.body.classList.add("modal-open");
+      setBackgroundInert(true);
+      closeBtn.focus({ preventScroll: true });
     }
 
-    images.forEach((img, i) => img.addEventListener("click", () => openModal(i)));
-    document.querySelector(".close").addEventListener("click", closeModal);
+    function closeModal() {
+      modal.classList.remove("open");
+      modal.hidden = true;
+      document.body.classList.remove("modal-open");
+      setBackgroundInert(false);
+      modalImg.removeAttribute("src");
+      modalImg.alt = "";
+      if (lastFocus && typeof lastFocus.focus === "function") {
+        lastFocus.focus({ preventScroll: true });
+      }
+    }
+
+    items.forEach((btn, i) => {
+      btn.addEventListener("click", () => openModal(i));
+    });
+    closeBtn.addEventListener("click", closeModal);
     document.getElementById("prevBtn").addEventListener("click", () =>
-      openModal((currentIndex - 1 + images.length) % images.length)
+      showImage((currentIndex - 1 + items.length) % items.length)
     );
     document.getElementById("nextBtn").addEventListener("click", () =>
-      openModal((currentIndex + 1) % images.length)
+      showImage((currentIndex + 1) % items.length)
     );
-    modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
     document.addEventListener("keydown", (e) => {
       if (!modal.classList.contains("open")) return;
-      if (e.key === "Escape") closeModal();
-      if (e.key === "ArrowLeft") openModal((currentIndex - 1 + images.length) % images.length);
-      if (e.key === "ArrowRight") openModal((currentIndex + 1) % images.length);
+      if (e.key === "Escape") {
+        e.preventDefault();
+        closeModal();
+        return;
+      }
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        showImage((currentIndex - 1 + items.length) % items.length);
+        return;
+      }
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
+        showImage((currentIndex + 1) % items.length);
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const list = focusables();
+      if (!list.length) return;
+      const first = list[0];
+      const last = list[list.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     });
-    modal.addEventListener("touchstart", (e) => { touchX = e.changedTouches[0].screenX; }, { passive: true });
+    modal.addEventListener("touchstart", (e) => {
+      touchX = e.changedTouches[0].screenX;
+    }, { passive: true });
     modal.addEventListener("touchend", (e) => {
       if (touchX == null) return;
       const dx = e.changedTouches[0].screenX - touchX;
       if (Math.abs(dx) > 50) {
-        if (dx > 0) openModal((currentIndex - 1 + images.length) % images.length);
-        else openModal((currentIndex + 1) % images.length);
+        if (dx > 0) showImage((currentIndex - 1 + items.length) % items.length);
+        else showImage((currentIndex + 1) % items.length);
       }
       touchX = null;
     }, { passive: true });

@@ -175,6 +175,10 @@
     gap: 0.15rem;
   }
 
+  .nav > .nav-link {
+    margin-top: 0.35rem;
+  }
+
   .nav-num {
     display: inline-block;
     width: 1.75rem;
@@ -205,8 +209,9 @@
     min-height: 52px;
     padding: 0.55rem 0.85rem 0.55rem 0.75rem;
     border: none;
-    border-left: 3px solid transparent;
     border-radius: 0;
+    box-shadow: none;
+    outline: none;
     font-size: clamp(1.15rem, 5.5vw, 1.55rem);
     font-weight: 700;
     letter-spacing: 0.12em;
@@ -216,7 +221,7 @@
       opacity 0.35s cubic-bezier(0.2, 0.85, 0.2, 1),
       transform 0.4s cubic-bezier(0.2, 0.85, 0.2, 1),
       background 0.2s ease,
-      border-color 0.2s ease;
+      box-shadow 0.2s ease;
     transition-delay: 0s;
   }
 
@@ -266,15 +271,15 @@
   .nav-main .nav-link:nth-child(1) { --i: 0; }
   .nav-main .nav-link:nth-child(2) { --i: 1; }
   .nav-main .nav-link:nth-child(3) { --i: 2; }
-  .nav-main .nav-link:nth-child(4) { --i: 3; }
-  .nav-sub .nav-link:nth-child(1) { --i: 4; }
-  .nav-sub .nav-link:nth-child(2) { --i: 5; }
+  .nav-sub .nav-link:nth-child(1) { --i: 3; }
+  .nav-sub .nav-link:nth-child(2) { --i: 4; }
+  .nav > .nav-link { --i: 5; }
 
   .topbar .nav .nav-link[aria-current="page"],
   body.home .cover-nav .nav .nav-link[aria-current="page"],
   body > .nav .nav-link[aria-current="page"] {
-    border-left-color: var(--blue);
     background: color-mix(in srgb, var(--blue) 6%, transparent);
+    box-shadow: inset 3px 0 0 var(--blue);
   }
 
   .topbar .nav .nav-link[aria-current="page"] .nav-num,
@@ -292,19 +297,41 @@
     height: 0.4rem;
     margin-left: 0.55rem;
     border-radius: 50%;
-    background: var(--yellow);
+    background: var(--blue);
     vertical-align: 0.15em;
   }
 
   .topbar .nav .nav-link:hover,
+  .topbar .nav .nav-link:focus,
   .topbar .nav .nav-link:focus-visible,
   body.home .cover-nav .nav .nav-link:hover,
+  body.home .cover-nav .nav .nav-link:focus,
   body.home .cover-nav .nav .nav-link:focus-visible,
   body > .nav .nav-link:hover,
+  body > .nav .nav-link:focus,
   body > .nav .nav-link:focus-visible {
+    outline: none;
     background: var(--blue-soft);
     text-decoration: none;
     opacity: 1;
+  }
+
+  .topbar .nav .nav-link:focus,
+  .topbar .nav .nav-link:focus-visible,
+  body.home .cover-nav .nav .nav-link:focus,
+  body.home .cover-nav .nav .nav-link:focus-visible,
+  body > .nav .nav-link:focus,
+  body > .nav .nav-link:focus-visible {
+    box-shadow: inset 3px 0 0 color-mix(in srgb, var(--blue) 45%, transparent);
+  }
+
+  .topbar .nav .nav-link[aria-current="page"]:focus,
+  .topbar .nav .nav-link[aria-current="page"]:focus-visible,
+  body.home .cover-nav .nav .nav-link[aria-current="page"]:focus,
+  body.home .cover-nav .nav .nav-link[aria-current="page"]:focus-visible,
+  body > .nav .nav-link[aria-current="page"]:focus,
+  body > .nav .nav-link[aria-current="page"]:focus-visible {
+    box-shadow: inset 3px 0 0 var(--blue);
   }
 
   .topbar .nav .nav-link.is-nav-pressed,
@@ -460,7 +487,7 @@
   .tour-layout {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 0;
   }
 
   .tour-main {
@@ -471,23 +498,53 @@
     order: 1;
     position: static;
     padding-bottom: 0;
+    background: transparent;
+    backdrop-filter: none;
   }
 
+  /* Side photo is desktop chrome — interrupts list hierarchy on phone */
   .tour-figure {
-    order: 2;
-    position: static;
-    max-width: 100%;
-    justify-self: stretch;
-    width: 100%;
+    display: none;
   }
 
   .tour-archive {
-    order: 3;
+    order: 2;
+    margin-top: 1.75rem;
+    padding-top: 1.35rem;
+    border-top: 1px solid var(--blue-soft);
+  }
+
+  .tour-section-title {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    margin-bottom: 1rem;
+  }
+
+  .tour-archive .tour-section-title {
+    margin-top: 0;
+    margin-bottom: 0.65rem;
+    color: color-mix(in srgb, var(--blue) 55%, var(--cream));
+  }
+
+  .tour-upcoming-list.is-loading {
+    gap: 1rem;
+  }
+
+  .tour-upcoming-list.is-loading .tour-skeleton:first-child {
+    border: 1.5px solid color-mix(in srgb, var(--blue) 28%, transparent);
+    background: color-mix(in srgb, var(--blue) 5%, var(--cream));
+    padding: 1.15rem 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .tour-skeleton {
+    gap: 0.65rem;
+    padding: 1rem 0;
   }
 
   .tour-item {
-    gap: 0.35rem 0.75rem;
-    padding: 0.95rem 0;
+    gap: 0.55rem;
+    padding: 1.15rem 0;
     align-items: start;
   }
 
@@ -495,12 +552,16 @@
   .tour-item.next {
     grid-template-columns: 1fr;
     grid-template-areas: none;
-    justify-items: start;
+    justify-items: stretch;
   }
 
+  /* Primary: next concert as clear hero block */
   .tour-item.next {
-    padding: 1rem 0.95rem;
+    padding: 1.2rem 1.05rem 1.25rem;
     width: 100%;
+    margin-bottom: 1rem;
+    gap: 0.65rem;
+    box-sizing: border-box;
   }
 
   .tour-item.next .badge,
@@ -511,126 +572,209 @@
   }
 
   .tour-item.next .badge {
-    margin: 0 0 0.35rem;
+    margin: 0;
     font-size: 0.62rem;
     letter-spacing: 0.14em;
+    padding: 0.32rem 0.55rem;
+    min-height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-self: start;
+    width: max-content;
+    max-width: 100%;
   }
 
   .tour-item.next .tour-scan {
     width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.2rem;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.2rem 0.65rem;
   }
 
   .tour-item.next .tour-date {
-    font-size: clamp(1.15rem, 5.5vw, 1.35rem);
+    font-size: clamp(1.28rem, 6vw, 1.5rem);
     letter-spacing: 0.04em;
+    line-height: 1.15;
   }
 
   .tour-item.next .tour-when {
-    font-size: 0.78rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
   }
 
   .tour-item.next .tour-venue,
   .tour-item.next .tour-city {
     grid-column: auto;
     width: 100%;
+    flex: 1 1 100%;
   }
 
   .tour-item.next .tour-venue {
-    font-size: 1rem;
-    margin-top: 0.35rem;
+    font-size: 1.05rem;
+    margin-top: 0.4rem;
     line-height: 1.35;
   }
 
   .tour-item.next .tour-city {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+    margin-top: 0.1rem;
   }
 
-  .tour-meta {
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
-    margin-top: 0.35rem;
-  }
-
-  .tour-maps,
-  .tour-ticket-note {
-    font-size: 0.74rem;
-  }
-
+  /* Scan rows: date + weekday on one line, venue/city below */
   .tour-scan {
     width: 100%;
-    gap: 0.2rem 0.75rem;
-    font-size: 0.78rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.2rem 0.65rem;
+    font-size: 0.82rem;
     letter-spacing: 0.04em;
-    line-height: 1.45;
+    line-height: 1.4;
   }
 
   .tour-item.past .tour-scan {
     display: flex;
     flex-wrap: wrap;
+    grid-template-columns: none;
+    gap: 0.15rem 0.55rem;
   }
 
   .tour-date {
-    font-size: 0.95rem;
+    font-size: 1.08rem;
+    letter-spacing: 0.05em;
+  }
+
+  .tour-item.past {
+    padding: 0.85rem 0;
+    gap: 0.25rem;
   }
 
   .tour-item.past .tour-date {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 
   .tour-when {
-    font-size: 0.7rem;
+    font-size: 0.74rem;
     letter-spacing: 0.08em;
   }
 
   .tour-venue,
   .tour-place {
     flex: 1 1 100%;
-    line-height: 1.35;
+    line-height: 1.4;
+    font-size: 0.92rem;
+    margin-top: 0.2rem;
+  }
+
+  .tour-item.past .tour-venue,
+  .tour-item.past .tour-place {
+    font-size: 0.84rem;
+    margin-top: 0.1rem;
   }
 
   .tour-city {
     flex: 1 1 100%;
+    font-size: 0.8rem;
+    margin-top: 0;
+    line-height: 1.35;
+  }
+
+  .tour-item.past .tour-city {
     font-size: 0.74rem;
-    margin-top: -0.05rem;
+  }
+
+  .tour-item.past .link-ext--archive {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    min-height: 44px;
+    padding: 0.2rem 0;
+  }
+
+  .tour-meta {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 0.75rem;
+    margin-top: 0.15rem;
+  }
+
+  .tour-item.next .tour-meta {
+    margin-top: 0.1rem;
+  }
+
+  /* Labeled maps control — icon alone was hard to parse */
+  .tour-maps {
+    width: auto;
+    height: auto;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.35rem 0.15rem;
+    gap: 0.4rem;
+    justify-content: flex-start;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .tour-maps::after {
+    content: "Wegbeschreibung";
+  }
+
+  .tour-ticket-note {
+    font-size: 0.76rem;
+    line-height: 1.4;
+    flex: 1 1 12rem;
   }
 
   .tour-actions {
     align-items: stretch;
     flex-direction: column;
     width: 100%;
-    gap: 0.45rem;
-    margin-top: 0.55rem;
+    gap: 0.55rem;
+    margin-top: 0.35rem;
+  }
+
+  .tour-item.next .tour-actions {
+    margin-top: 0.5rem;
   }
 
   .tour-actions .btn {
     width: 100%;
     white-space: normal;
     text-align: center;
-    font-size: 0.72rem;
+    font-size: 0.74rem;
     letter-spacing: 0.1em;
-    padding: 0.6rem 0.85rem;
-    min-height: 44px;
+    padding: 0.7rem 0.95rem;
+    min-height: 48px;
+    box-sizing: border-box;
   }
 
   .tour-more {
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     line-height: 1.55;
-    padding: 1rem 0 0;
+    padding: 1.15rem 0 0.25rem;
+    gap: 0.55rem;
   }
 
-  .tour-section-title {
-    font-size: 0.7rem;
-    letter-spacing: 0.14em;
+  .tour-more a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0.35rem 0;
   }
 
-  .tour-archive .tour-section-title {
-    margin-top: 0.25rem;
+  .tour-empty {
+    padding: 1.15rem 1.05rem;
+    gap: 0.85rem;
+  }
+
+  .tour-empty .btn {
+    width: 100%;
+    min-height: 48px;
   }
 
   .group-label {
@@ -640,7 +784,7 @@
   }
 
   .group-year {
-    margin: 1rem 0 0.2rem;
+    margin: 1.1rem 0 0.25rem;
     font-size: 0.78rem;
   }
 
@@ -648,25 +792,20 @@
     margin-top: 0.55rem;
   }
 
+  .tour-older {
+    margin-top: 1rem;
+    padding-top: 0.65rem;
+  }
+
   .tour-older summary {
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     letter-spacing: 0.12em;
+    padding: 0.25rem 0;
   }
 
   .section-note {
     font-size: 0.78rem;
     line-height: 1.6;
-  }
-
-  .tour-photo {
-    width: 100%;
-    height: auto;
-    max-height: 240px;
-    aspect-ratio: 16 / 10;
-  }
-
-  .tour-figure figcaption {
-    font-size: 0.68rem;
   }
 
   .listen-layout {
@@ -724,7 +863,7 @@
   }
 
   .member-card .portrait {
-    width: min(200px, 100%);
+    width: min(260px, 100%);
     border-width: 4px;
     margin-bottom: 0.65rem;
   }
@@ -778,19 +917,21 @@
   }
 
   .profile-hero {
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    text-align: left;
-    gap: 1rem;
+    text-align: center;
+    gap: 0.85rem;
     width: 100%;
   }
 
   .profile .portrait {
-    width: 120px;
-    aspect-ratio: 3 / 4;
+    width: min(280px, 72vw);
+    aspect-ratio: 1;
     height: auto;
-    border-width: 1.5px;
+    border-radius: 50%;
+    border-width: 4px;
     flex-shrink: 0;
+    margin: 0 auto;
   }
 
   .profile-identity h1 {
@@ -925,7 +1066,7 @@
   .about-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
-    max-width: 280px;
+    max-width: 320px;
     margin-inline: auto;
   }
 
@@ -934,7 +1075,7 @@
   }
 
   .member-card .portrait {
-    width: min(220px, 72vw);
+    width: min(280px, 78vw);
     max-width: none;
     border-width: 4px;
     margin-bottom: 0.85rem;
@@ -988,19 +1129,35 @@
   }
 
   .tour-item.next {
-    padding: 0.9rem 0.85rem;
+    padding: 1.1rem 0.95rem 1.15rem;
   }
 
   .tour-item.next .tour-date {
-    font-size: 1.2rem;
+    font-size: clamp(1.22rem, 7vw, 1.4rem);
   }
 
   .tour-item.next .tour-venue {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
-  .tour-photo {
-    max-height: 200px;
+  .tour-item.next .tour-actions {
+    gap: 0.5rem;
+  }
+
+  .tour-actions .btn {
+    font-size: 0.72rem;
+    letter-spacing: 0.09em;
+    padding: 0.65rem 0.8rem;
+  }
+
+  .tour-archive {
+    margin-top: 1.5rem;
+    padding-top: 1.15rem;
+  }
+
+  .tour-maps {
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
   }
 
   .topbar {
@@ -1019,15 +1176,18 @@
 
   .profile-hero {
     flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
+    align-items: center;
+    text-align: center;
     gap: 0.85rem;
   }
 
   .profile .portrait {
-    width: min(160px, 48vw);
-    aspect-ratio: 3 / 4;
+    width: min(280px, 72vw);
+    aspect-ratio: 1;
     height: auto;
+    border-radius: 50%;
+    border-width: 4px;
+    margin: 0 auto;
   }
 
   .profile-siblings {
@@ -1085,7 +1245,7 @@
   }
 
   .member-card .portrait {
-    width: min(200px, 78vw);
+    width: min(250px, 82vw);
   }
 
   .track-list li {
