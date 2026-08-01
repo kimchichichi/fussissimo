@@ -2411,24 +2411,34 @@ body.home .stack-btn {
   animation: cover-breathe 3.4s ease-in-out infinite;
   transition:
     transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.35s ease;
+    opacity 0.35s ease,
+    color 0.35s ease,
+    filter 0.35s ease;
 }
 
 body.home .stack-btn:hover,
 body.home .stack-btn:focus-visible {
   animation: none;
-  transform: scale(1.02);
-  opacity: 0.92;
+  transform: scale(1.035);
+  opacity: 1;
+  color: color-mix(in srgb, var(--blue) 86%, var(--cream));
+  filter: brightness(1.05);
 }
 
 /* Logo morph: stack collapses toward trio header wordmark */
 body.home.is-morphing .stack-btn:hover,
 body.home.is-morphing .stack-btn:focus-visible {
   opacity: 1;
+  color: var(--blue);
+  filter: none;
+  /* Inline morph transform owns motion; avoid fighting it with hover scale */
+  transform: none;
 }
 
 body.home.is-morphing .stack-btn {
   animation: none;
+  color: var(--blue);
+  filter: none;
 }
 
 body.home.is-morphing .stack-logo {
@@ -2462,7 +2472,8 @@ body.home .stack-logo {
   line-height: 0.81;
   letter-spacing: -0.02em;
   text-transform: uppercase;
-  color: var(--blue);
+  color: inherit;
+  cursor: pointer;
   font-kerning: normal;
   font-variant-ligatures: discretionary-ligatures;
   font-feature-settings: "kern" 1, "liga" 1, "dlig" 1, "titl" 1;
@@ -2875,13 +2886,17 @@ body.home.is-open .cover-nav .nav-toggle {
   body.home .stack-btn,
   body.home .stack-logo,
   body.home .cover-hint {
-    transition: opacity 0.35s ease !important;
+    transition: opacity 0.35s ease, color 0.35s ease, filter 0.35s ease !important;
     animation: none !important;
   }
 
   body.home .stack-btn:hover,
   body.home .stack-btn:focus-visible {
     transform: none;
+    /* Color / brightness only — no scale when reduced motion */
+    opacity: 1;
+    color: color-mix(in srgb, var(--blue) 86%, var(--cream));
+    filter: brightness(1.05);
   }
 
   body.home .cover-hint {
