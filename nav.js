@@ -5,7 +5,7 @@
   if (!toggle || !nav) return;
 
   const mq = window.matchMedia("(max-width: 991px)");
-  const CLOSE_MS = 420;
+  const CLOSE_MS = 380;
   let placeholder = null;
   let closeTimer = 0;
 
@@ -23,6 +23,10 @@
     placeholder = null;
   }
 
+  function firstNavLink() {
+    return nav.querySelector(".nav-link, a[href]");
+  }
+
   function setOpen(open) {
     window.clearTimeout(closeTimer);
 
@@ -36,6 +40,15 @@
       nav.setAttribute("aria-hidden", open ? "false" : "true");
     } else {
       nav.removeAttribute("aria-hidden");
+    }
+
+    if (open && mq.matches) {
+      const first = firstNavLink();
+      if (first) {
+        window.setTimeout(function () {
+          first.focus({ preventScroll: true });
+        }, 80);
+      }
     }
 
     if (!open) {
@@ -58,7 +71,7 @@
     const link = e.target.closest("a");
     if (!link) return;
     link.classList.add("is-nav-pressed");
-    window.setTimeout(close, 120);
+    window.setTimeout(close, 140);
   });
 
   document.addEventListener("keydown", function (e) {

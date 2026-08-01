@@ -11,12 +11,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="index.css?v=20260801icons" />
-  <link rel="stylesheet" href="media.css?v=20260801icons" />
+  <link rel="stylesheet" href="index.css?v=20260801ytctr" />
+  <link rel="stylesheet" href="media.css?v=20260801ytctr" />
 </head>
 <body>
   <div class="topbar">
-    <a class="topbar-brand wordmark" href="index.html" aria-label="Zur Startseite">FUSSISSIMO</a>
+    <div class="topbar-start">
+      <a class="topbar-brand wordmark" href="index.html" aria-label="Zur Startseite">FUSSISSIMO</a>
+      <span class="topbar-page">Playlist</span>
+    </div>
     <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menü öffnen">
     <span class="nav-toggle-box" aria-hidden="true">
       <span class="nav-toggle-bar"></span>
@@ -25,12 +28,23 @@
     </span>
     </button>
     <nav class="nav" id="site-nav" aria-label="Hauptnavigation">
-      <a href="index.html#trio">Trio</a>
-      <a href="listen.html" aria-current="page">Playlist</a>
-      <a href="about.html">Musiker</a>
-      <a href="tour.html">Konzerte</a>
-      <a href="galerie.html">Galerie</a>
-      <a href="kontakt.html">Kontakt</a>
+      <div class="nav-main">
+        <a class="nav-link" href="index.html#trio"><span class="nav-num" aria-hidden="true">01</span><span class="nav-label">Trio</span></a>
+        <a class="nav-link" href="tour.html"><span class="nav-num" aria-hidden="true">02</span><span class="nav-label">Konzerte</span></a>
+        <a class="nav-link" href="listen.html" aria-current="page"><span class="nav-num" aria-hidden="true">03</span><span class="nav-label">Playlist</span></a>
+        <a class="nav-link" href="kontakt.html"><span class="nav-num" aria-hidden="true">04</span><span class="nav-label">Kontakt</span></a>
+      </div>
+      <div class="nav-sub" aria-label="Weitere Seiten">
+        <a class="nav-link nav-link--sub" href="about.html"><span class="nav-label">Musiker</span></a>
+        <a class="nav-link nav-link--sub" href="galerie.html"><span class="nav-label">Galerie</span></a>
+      </div>
+      <div class="nav-foot">
+        <a class="nav-next" href="tour.html">
+          <span class="nav-next-kicker">Nächstes Konzert</span>
+          <span class="nav-next-meta">27.09 · Gemünden</span>
+        </a>
+        <a class="btn nav-cta" href="kontakt.html">Anfragen</a>
+      </div>
     </nav>
   </div>
 
@@ -47,67 +61,67 @@
       <ul class="track-list" id="tracks">
         <li id="Bossa9" class="active" aria-current="true" data-src="https://www.youtube.com/embed/j1U5qDVxmUQ" tabindex="0">
           <span class="track-num">01</span>
-          <span class="play-ico" aria-hidden="true"><i data-lucide="pause"></i></span>
+          <span class="play-ico" aria-hidden="true">▌▌</span>
           <span class="track-name">Bossa 9</span>
           <span class="track-dur">6:24</span>
         </li>
         <li id="Aman" data-src="https://www.youtube.com/embed/WkxEwOPyBnw" tabindex="0">
           <span class="track-num">02</span>
-          <span class="play-ico" aria-hidden="true"><i data-lucide="play"></i></span>
+          <span class="play-ico" aria-hidden="true">▶</span>
           <span class="track-name">Aman</span>
           <span class="track-dur">5:20</span>
         </li>
         <li id="FürMara" data-src="https://www.youtube.com/embed/0TYQhb9glyc" tabindex="0">
           <span class="track-num">03</span>
-          <span class="play-ico" aria-hidden="true"><i data-lucide="play"></i></span>
+          <span class="play-ico" aria-hidden="true">▶</span>
           <span class="track-name">Für Mara</span>
           <span class="track-dur">4:18</span>
         </li>
         <li id="Poinciana" data-src="https://www.youtube.com/embed/RBpnWuj-tyU" tabindex="0">
           <span class="track-num">04</span>
-          <span class="play-ico" aria-hidden="true"><i data-lucide="play"></i></span>
+          <span class="play-ico" aria-hidden="true">▶</span>
           <span class="track-name">Poinciana</span>
           <span class="track-dur">8:32</span>
         </li>
         <li id="Fussissimo" data-src="https://www.youtube.com/embed/Ii5aOikHhxw" tabindex="0">
           <span class="track-num">05</span>
-          <span class="play-ico" aria-hidden="true"><i data-lucide="play"></i></span>
+          <span class="play-ico" aria-hidden="true">▶</span>
           <span class="track-name">Fussissimo</span>
           <span class="track-dur">3:18</span>
         </li>
         <li id="MadeInFrance" data-src="https://www.youtube.com/embed/TsTN3AgrpbU" tabindex="0">
           <span class="track-num">06</span>
-          <span class="play-ico" aria-hidden="true"><i data-lucide="play"></i></span>
+          <span class="play-ico" aria-hidden="true">▶</span>
           <span class="track-name">Made in France</span>
           <span class="track-dur">5:24</span>
         </li>
         <li id="SiTuSavais" data-src="https://www.youtube.com/embed/25k0cR0Aqt0" tabindex="0">
           <span class="track-num">07</span>
-          <span class="play-ico" aria-hidden="true"><i data-lucide="play"></i></span>
+          <span class="play-ico" aria-hidden="true">▶</span>
           <span class="track-name">Si Tu Savais</span>
           <span class="track-dur">5:24</span>
         </li>
         <li id="PuppetBounce" data-src="https://www.youtube.com/embed/yjdyFI8O5iY" tabindex="0">
           <span class="track-num">08</span>
-          <span class="play-ico" aria-hidden="true"><i data-lucide="play"></i></span>
+          <span class="play-ico" aria-hidden="true">▶</span>
           <span class="track-name">Puppet Bounce</span>
           <span class="track-dur">5:54</span>
         </li>
         <li id="GreetingsFromMars" data-src="https://www.youtube.com/embed/feK_Tt9ehPA" tabindex="0">
           <span class="track-num">09</span>
-          <span class="play-ico" aria-hidden="true"><i data-lucide="play"></i></span>
+          <span class="play-ico" aria-hidden="true">▶</span>
           <span class="track-name">Greetings From Mars</span>
           <span class="track-dur">4:17</span>
         </li>
         <li id="Masir" data-src="https://www.youtube.com/embed/oB_0M43pp1E" tabindex="0">
           <span class="track-num">10</span>
-          <span class="play-ico" aria-hidden="true"><i data-lucide="play"></i></span>
+          <span class="play-ico" aria-hidden="true">▶</span>
           <span class="track-name">Masir</span>
           <span class="track-dur">9:33</span>
         </li>
         <li id="DouceAmbiance" data-src="https://www.youtube.com/embed/ktq8lMX51zs" tabindex="0">
           <span class="track-num">11</span>
-          <span class="play-ico" aria-hidden="true"><i data-lucide="play"></i></span>
+          <span class="play-ico" aria-hidden="true">▶</span>
           <span class="track-name">Douce Ambiance</span>
           <span class="track-dur">5:30</span>
         </li>
@@ -155,16 +169,11 @@
 
     function setIcons(playing) {
       items.forEach((el) => {
-        const wrap = el.querySelector(".play-ico");
-        if (!wrap) return;
-        const name = el === activeItem && playing ? "pause" : "play";
-        wrap.innerHTML = "";
-        const i = document.createElement("i");
-        i.setAttribute("data-lucide", name);
-        i.setAttribute("aria-hidden", "true");
-        wrap.appendChild(i);
+        const ico = el.querySelector(".play-ico");
+        if (!ico) return;
+        if (el === activeItem && playing) ico.textContent = "▌▌";
+        else ico.textContent = "▶";
       });
-      if (window.FUSSIcons) FUSSIcons.refresh(document.getElementById("tracks"));
     }
 
     function markActive(item) {
@@ -199,7 +208,7 @@
       player.loadVideoById(id);
       if (!autoplay) player.pauseVideo();
       if (autoplay && window.innerWidth <= 991) {
-        document.querySelector(".player-dock").scrollIntoView({ behavior: "smooth", block: "nearest" });
+        document.querySelector(".player-dock").scrollIntoView({ behavior: "smooth", block: "center" });
       }
     }
 
@@ -256,6 +265,6 @@
   </script>
   <script src="https://unpkg.com/lucide@0.511.0" defer></script>
   <script src="icons.js?v=20260801icons" defer></script>
-  <script src="nav.js?v=20260801hamb3" defer></script>
+  <script src="nav.js?v=20260801navux2" defer></script>
 </body>
 </html>

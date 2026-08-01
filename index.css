@@ -134,10 +134,22 @@ a:focus:not(:focus-visible) {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   gap: 0.35rem 1.35rem;
 }
 
-.nav a {
+.nav-main,
+.nav-sub {
+  display: contents;
+}
+
+.nav-num,
+.nav-foot {
+  display: none;
+}
+
+.nav-link {
+  position: relative;
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -145,11 +157,76 @@ a:focus:not(:focus-visible) {
   min-height: 44px;
   display: inline-flex;
   align-items: center;
+  color: var(--blue);
 }
 
-.nav a[aria-current="page"] {
-  text-decoration: underline;
-  text-underline-offset: 0.35em;
+.nav-link .nav-label {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.55rem;
+  height: 1.5px;
+  background: var(--blue);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.28s cubic-bezier(0.2, 0.85, 0.2, 1);
+}
+
+.nav-link:hover {
+  text-decoration: none;
+  opacity: 0.88;
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.nav-link[aria-current="page"] {
+  text-decoration: none;
+}
+
+.nav-link[aria-current="page"]::after {
+  transform: scaleX(1);
+  background: var(--yellow);
+  height: 2px;
+}
+
+.nav-link[aria-current="page"] .nav-label::before {
+  content: "";
+  display: inline-block;
+  width: 0.35rem;
+  height: 0.35rem;
+  margin-right: 0.45rem;
+  border-radius: 50%;
+  background: var(--yellow);
+  vertical-align: 0.1em;
+}
+
+.nav-link--sub {
+  opacity: 0.72;
+}
+
+.nav-link--sub:hover,
+.nav-link--sub[aria-current="page"] {
+  opacity: 1;
+}
+
+.topbar-start {
+  display: contents;
+}
+
+.topbar-page {
+  display: none;
+}
+
+.cover-brand {
+  display: none;
 }
 
 /* ——— Page header ——— */
@@ -977,27 +1054,18 @@ a.meta-card:hover {
 
 .track-list .play-ico {
   width: 1.4rem;
-  height: 1.4rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   text-align: center;
   opacity: 0.45;
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   flex-shrink: 0;
   transition: opacity 0.2s, transform 0.2s, color 0.2s;
-}
-
-.track-list .play-ico .icon,
-.track-list .play-ico svg.lucide {
-  width: 0.95em;
-  height: 0.95em;
 }
 
 .track-list li.active .play-ico {
   opacity: 1;
   color: var(--blue);
   transform: scale(1.12);
+  font-weight: 800;
 }
 
 .track-name {
@@ -1887,7 +1955,7 @@ a.meta-card:hover {
   justify-content: center;
   gap: 5px;
   width: 22px;
-  transition: transform 0.45s cubic-bezier(0.68, -0.45, 0.27, 1.35);
+  transition: transform 0.35s cubic-bezier(0.2, 0.85, 0.2, 1);
 }
 
 .nav-toggle-bar {
@@ -1897,9 +1965,9 @@ a.meta-card:hover {
   background: currentColor;
   border-radius: 1px;
   transition:
-    transform 0.4s cubic-bezier(0.68, -0.45, 0.27, 1.35),
+    transform 0.35s cubic-bezier(0.2, 0.85, 0.2, 1),
     opacity 0.25s ease,
-    width 0.35s ease;
+    width 0.3s ease;
   transform-origin: center;
 }
 
@@ -1909,7 +1977,7 @@ a.meta-card:hover {
 }
 
 body.nav-open .nav-toggle-box {
-  transform: rotate(90deg);
+  transform: none;
 }
 
 body.nav-open .nav-toggle-bar:nth-child(1) {
@@ -1926,10 +1994,15 @@ body.nav-open .nav-toggle-bar:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-body.nav-open .topbar-brand {
+body.nav-open .topbar-brand,
+body.nav-open .topbar-page,
+body.nav-open .cover-brand {
   opacity: 0;
-  transform: translateY(-50%) translateX(-10px);
   pointer-events: none;
+}
+
+body.nav-open .topbar-brand {
+  transform: translateY(-50%) translateX(-10px);
 }
 
 @media (max-width: 991px) {
@@ -1991,25 +2064,18 @@ body.home .cover-nav nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   gap: 0.35rem 1.35rem;
   pointer-events: auto;
 }
 
-body.home .cover-nav a {
+body.home .cover-nav .nav-link {
   font-size: 0.68rem;
-  font-weight: 700;
   letter-spacing: 0.18em;
-  text-decoration: none;
-  color: var(--blue);
-  min-height: 44px;
-  padding: 0 0.15rem;
-  display: inline-flex;
-  align-items: center;
 }
 
-body.home .cover-nav a:hover {
-  text-decoration: underline;
-  text-underline-offset: 0.3em;
+body.home .cover-nav .nav-link:hover {
+  text-decoration: none;
 }
 
 body.home .screen {
@@ -2238,12 +2304,13 @@ body.home .back-cover:focus-visible {
 
 body.home .trio-logo {
   display: block;
-  width: min(48vw, 300px);
+  width: min(72vw, 300px);
+  max-width: calc(100% - 6.5rem);
   margin: 0 auto 0.85rem;
   font-family: var(--display);
-  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-size: clamp(1.85rem, 9vw, 4.2rem);
   line-height: 0.88;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.02em;
   text-align: center;
   text-transform: uppercase;
   color: var(--blue);
@@ -2252,6 +2319,7 @@ body.home .trio-logo {
   font-feature-settings: "kern" 1, "liga" 1, "dlig" 1, "titl" 1;
   user-select: none;
   white-space: nowrap;
+  overflow: hidden;
 }
 
 body.home .trio-photo {
@@ -2393,9 +2461,10 @@ body.home.is-open .cover-nav .nav-toggle {
   }
 
   body.home .trio-logo {
-    width: min(88vw, 280px);
-    font-size: clamp(2.1rem, 11vw, 3.2rem);
-    white-space: normal;
+    width: min(70vw, 260px);
+    max-width: calc(100% - 6rem);
+    font-size: clamp(1.7rem, 10vw, 2.8rem);
+    white-space: nowrap;
   }
 
   body.home .trio-bio {
