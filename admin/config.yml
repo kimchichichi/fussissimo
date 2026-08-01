@@ -1,22 +1,13 @@
-# Decap CMS — GitHub Pages
-#
-# Before first login, replace the three PLACEHOLDER values below
-# (see admin/SETUP.md).
-
 backend:
   name: github
-  repo: USERNAME/fussissimo   # ← GitHub owner/repo
+  repo: kimchichichi/fussissimo
   branch: main
-  base_url: https://YOUR-WORKER.workers.dev   # ← Cloudflare OAuth proxy (no trailing slash)
+  base_url: https://fussissimo-decap-oauth.wldms2305.workers.dev
   auth_endpoint: auth
 
-# Local preview without GitHub login:
-#   npx --yes decap-server
-# then open http://localhost:8081/admin/ with a static server on :8081
 local_backend: true
 
 media_folder: image/uploads
-# No leading slash — works for both user sites and project Pages (/repo/)
 public_folder: image/uploads
 
 locale: de
