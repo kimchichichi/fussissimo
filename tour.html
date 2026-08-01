@@ -11,8 +11,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="index.css?v=20260801navux2" />
-  <link rel="stylesheet" href="media.css?v=20260801navux2" />
+  <link rel="stylesheet" href="index.css?v=20260801uxall" />
+  <link rel="stylesheet" href="media.css?v=20260801uxall" />
 </head>
 <body>
   <div class="topbar">
@@ -41,7 +41,7 @@
       <div class="nav-foot">
         <a class="nav-next" href="tour.html">
           <span class="nav-next-kicker">Nächstes Konzert</span>
-          <span class="nav-next-meta">27.09 · Gemünden</span>
+          <span class="nav-next-meta" data-next-concert>27.09 · Gemünden</span>
         </a>
         <a class="btn nav-cta" href="kontakt.html">Anfragen</a>
       </div>
@@ -62,8 +62,23 @@
       <section class="tour-upcoming" aria-labelledby="tour-upcoming-heading">
         <h2 id="tour-upcoming-heading" class="tour-section-title">Kommende Konzerte</h2>
 
-        <div class="tour-upcoming-list" data-tour-upcoming>
-          <!-- Filled by concerts.js from data/concerts.json (CMS-editable) -->
+        <div class="tour-upcoming-list" data-tour-upcoming aria-busy="true">
+          <div data-tour-skeleton aria-hidden="true">
+            <div class="tour-skeleton">
+              <div class="tour-skeleton-line tour-skeleton-line--sm"></div>
+              <div class="tour-skeleton-line tour-skeleton-line--lg"></div>
+              <div class="tour-skeleton-line tour-skeleton-line--md"></div>
+            </div>
+            <div class="tour-skeleton">
+              <div class="tour-skeleton-line tour-skeleton-line--sm"></div>
+              <div class="tour-skeleton-line tour-skeleton-line--lg"></div>
+              <div class="tour-skeleton-line tour-skeleton-line--md"></div>
+            </div>
+            <div class="tour-skeleton">
+              <div class="tour-skeleton-line tour-skeleton-line--sm"></div>
+              <div class="tour-skeleton-line tour-skeleton-line--lg"></div>
+            </div>
+          </div>
         </div>
 
         <div class="tour-empty" data-tour-empty hidden>
@@ -87,7 +102,7 @@
       </div>
 
       <figure class="tour-figure">
-        <img class="tour-photo" src="image/pdf-1.jpg" alt="Trio Fussissimo auf der Bühne" loading="lazy" width="240" height="300" />
+        <img class="tour-photo" src="image/thumbs/pdf-1.jpg" alt="Trio Fussissimo auf der Bühne" loading="lazy" width="240" height="160" />
         <figcaption>© Kat Schulze</figcaption>
       </figure>
     </div>
@@ -112,8 +127,9 @@
 
 
   <script src="https://unpkg.com/lucide@0.511.0" defer></script>
-  <script src="icons.js?v=20260801icons" defer></script>
-  <script src="concerts.js?v=20260801icons" defer></script>
-  <script src="nav.js?v=20260801navux2" defer></script>
+  <script src="icons.js?v=20260801uxall" defer></script>
+  <script src="concerts.js?v=20260801uxall" defer></script>
+  <script src="next-concert.js?v=20260801uxall" defer></script>
+  <script src="nav.js?v=20260801uxall" defer></script>
 </body>
 </html>

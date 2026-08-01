@@ -27,6 +27,16 @@
     return nav.querySelector(".nav-link, a[href]");
   }
 
+  function focusables() {
+    return [toggle].concat(
+      Array.prototype.slice.call(
+        nav.querySelectorAll(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
+      )
+    );
+  }
+
   function setOpen(open) {
     window.clearTimeout(closeTimer);
 
@@ -75,9 +85,31 @@
   });
 
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && body.classList.contains("nav-open")) {
+    if (!body.classList.contains("nav-open")) return;
+
+    if (e.key === "Escape") {
       close();
       toggle.focus();
+      return;
+    }
+
+    if (e.key !== "Tab" || !mq.matches) return;
+
+    const list = focusables().filter(function (el) {
+      return el && el.offsetParent !== null;
+    });
+    if (!list.length) return;
+
+    const first = list[0];
+    const last = list[list.length - 1];
+    const active = document.activeElement;
+
+    if (e.shiftKey && active === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && active === last) {
+      e.preventDefault();
+      first.focus();
     }
   });
 

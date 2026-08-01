@@ -13,6 +13,9 @@
   var kicker = document.querySelector("[data-tour-kicker]");
   if (!upcomingRoot || !archiveRoot) return;
 
+  upcomingRoot.setAttribute("aria-busy", "true");
+  upcomingRoot.classList.add("is-loading");
+
   var WEEKDAYS = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
 
   function startOfToday() {
@@ -409,7 +412,15 @@
     updateOlderCount();
   }
 
+  function clearLoading() {
+    upcomingRoot.classList.remove("is-loading");
+    upcomingRoot.removeAttribute("aria-busy");
+    var skel = upcomingRoot.querySelector("[data-tour-skeleton]");
+    if (skel) skel.remove();
+  }
+
   function mount(list) {
+    clearLoading();
     upcomingRoot.textContent = "";
     list
       .slice()
@@ -448,6 +459,8 @@
     })
     .catch(function (err) {
       console.error(err);
+      clearLoading();
+      upcomingRoot.textContent = "";
       if (emptyState) emptyState.hidden = false;
       if (kicker) kicker.textContent = "/ Termine in Vorbereitung";
     });

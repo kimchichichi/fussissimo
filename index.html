@@ -11,8 +11,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="index.css?v=20260801navux2" />
-  <link rel="stylesheet" href="media.css?v=20260801navux2" />
+  <link rel="stylesheet" href="index.css?v=20260801uxall" />
+  <link rel="stylesheet" href="media.css?v=20260801uxall" />
 </head>
 <body class="home">
   <header class="cover-nav">
@@ -38,7 +38,7 @@
       <div class="nav-foot">
         <a class="nav-next" href="tour.html">
           <span class="nav-next-kicker">Nächstes Konzert</span>
-          <span class="nav-next-meta">27.09 · Gemünden</span>
+          <span class="nav-next-meta" data-next-concert>27.09 · Gemünden</span>
         </a>
         <a class="btn nav-cta" href="kontakt.html">Anfragen</a>
       </div>
@@ -66,31 +66,29 @@
   <section class="screen screen-trio" id="trio" aria-label="Das Trio" aria-hidden="true">
     <button type="button" class="back-cover" id="closeTrio" aria-label="Zurück zum Cover"><i data-lucide="arrow-left"></i></button>
     <div class="trio-logo" aria-label="FUSSISSIMO">FUSSISSIMO</div>
+    <p class="trio-genre">Gypsy Ethno Jazz</p>
     <figure class="trio-photo">
-      <img src="image/pdf-1.jpg" alt="Trio Fussissimo" />
+      <img src="image/thumbs/pdf-1.jpg" alt="Trio Fussissimo" width="1200" height="800" />
       <figcaption>© Kat Schulze</figcaption>
     </figure>
     <p class="trio-bio">
-      Virtuose Spieltechnik und jede Menge Inspirationen aus Jazz und
-      Weltmusik! Diese Kombination macht das Trio zu einem besonders
-      interessanten Gypsy-Ethno-Jazz Ensemble! Seit fast 20 Jahren hat
-      sich der Gitarrist und Komponist Rehan Syed mit seinen Projekten
-      einen wohlklingenden Namen in der Gypsy Jazz-Szene erspielt und
-      ist nun mit dem erstklassigen Bassisten Simon Ort am Kontrabass
-      und dem preisgekrönten Akkordeonisten Harald Oeler in einer
-      Trio-Besetzung zu hören, die es in sich hat! Zum Programm von
-      „Trio Fussissimo“ gehören originelle Eigenkompositionen von
-      Rehan Syed mit Einflüssen von Tango, Bossa, französischer
-      Musette und orientalischer Musik, und Perlen aus dem Gypsy Jazz
-      und Weltmusik Repertoire.
+      Virtuose Spieltechnik und Inspirationen aus Jazz und Weltmusik —
+      Gypsy-Ethno-Jazz mit Eigenkompositionen von Rehan Syed, Simon Ort am
+      Kontrabass und Harald Oeler am Akkordeon. Tango, Bossa, Musette und
+      orientalische Farben treffen auf Perlen aus dem Gypsy-Jazz-Repertoire.
     </p>
+    <a class="trio-bio-more" href="about.html">Weiterlesen</a>
     <p class="members-line trio-members"><a href="about/rehansyed.html">Rehan Syed</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="about/haraldoeler.html">Harald Oeler</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="about/simonort.html">Simon Ort</a></p>
     <div class="trio-links">
-      <a href="listen.html">Playlist</a>
-      <a href="about.html">Musiker</a>
-      <a href="tour.html">Konzerte</a>
-      <a href="galerie.html">Galerie</a>
-      <a href="kontakt.html">Kontakt</a>
+      <div class="trio-links-primary">
+        <a class="btn" href="tour.html">Konzerte</a>
+        <a class="btn btn-ghost" href="kontakt.html">Anfragen</a>
+      </div>
+      <div class="trio-links-secondary">
+        <a href="listen.html">Playlist</a>
+        <a href="about.html">Musiker</a>
+        <a href="galerie.html">Galerie</a>
+      </div>
     </div>
   </section>
 
@@ -243,7 +241,8 @@
     if (location.hash === "#trio") openTrio({ morph: false });
   </script>
   <script src="https://unpkg.com/lucide@0.511.0" defer></script>
-  <script src="icons.js?v=20260801icons" defer></script>
-  <script src="nav.js?v=20260801navux2" defer></script>
+  <script src="icons.js?v=20260801uxall" defer></script>
+  <script src="next-concert.js?v=20260801uxall" defer></script>
+  <script src="nav.js?v=20260801uxall" defer></script>
 </body>
 </html>
