@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Konzerte — 27.09.2026 · FUSSISSIMO</title>
+  <meta name="description" content="Nächstes Konzert: 27.09.2026 · Huttenschloss, Gemünden am Main. Gypsy-Ethno-Jazz Trio FUSSISSIMO — Termine &amp; Buchung." />
+  <link rel="icon" href="image/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="image/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="image/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css?v=20260801sideways" />
+  <link rel="stylesheet" href="media.css?v=20260801sideways" />
+</head>
+<body class="has-mobile-nav">
+  <div class="topbar">
+    <a class="topbar-brand wordmark" href="index.html" aria-label="Zur Startseite">FUSSISSIMO</a>
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a href="index.html#trio">Trio</a>
+      <a href="listen.html">Playlist</a>
+      <a href="about.html">Musiker</a>
+      <a href="tour.html" aria-current="page">Konzerte</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+  </div>
+
+  <header class="page-header page-header--solo">
+    <div class="page-title">
+      <h1>Konzerte</h1>
+      <p data-tour-kicker>/ 27.09.2026 · Gemünden</p>
+    </div>
+  </header>
+
+  <div class="section section-split tour-page">
+    <img class="vtitle" src="image/vtitle-konzerte.svg?v=20260801sideways" alt="" width="90" height="220" />
+    <div class="tour-layout">
+      <div class="tour-main">
+      <section class="tour-upcoming" aria-labelledby="tour-upcoming-heading">
+        <h2 id="tour-upcoming-heading" class="tour-section-title">Kommende Konzerte</h2>
+
+        <div class="tour-upcoming-list" data-tour-upcoming>
+          <!-- Filled by concerts.js from data/concerts.json (CMS-editable) -->
+        </div>
+
+        <div class="tour-empty" data-tour-empty hidden>
+          <p>Derzeit keine bestätigten Termine.</p>
+          <a class="btn" href="mailto:info@rehansyed.de?subject=Buchung%20FUSSISSIMO">Konzert anfragen</a>
+        </div>
+
+        <div class="tour-more">
+          <p>Weitere Termine in Vorbereitung. Anfragen für Festivals, Clubs und private Feiern willkommen.</p>
+          <a href="mailto:info@rehansyed.de?subject=Buchung%20FUSSISSIMO">Konzert anfragen</a>
+        </div>
+      </section>
+
+      <section class="tour-archive" aria-labelledby="tour-archive-heading" data-tour-archive>
+        <h2 id="tour-archive-heading" class="tour-section-title">Vergangene Konzerte</h2>
+        <!-- Year groups filled by concerts.js -->
+        <details class="tour-older">
+          <summary>Ältere Konzerte <span class="tour-older-count">(0)</span></summary>
+        </details>
+      </section>
+      </div>
+
+      <figure class="tour-figure">
+        <img class="tour-photo" src="image/pdf-1.jpg" alt="Trio Fussissimo auf der Bühne" loading="lazy" width="240" height="300" />
+        <figcaption>© Kat Schulze</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="booking-strip">
+      <div>
+        <p class="pitch">Gypsy-Ethno-Jazz Trio · Buchung</p>
+        <p class="contacts">
+          <a href="tel:+491776007095">+49 177 6007095</a> ·
+          <a href="mailto:info@rehansyed.de">info@rehansyed.de</a>
+        </p>
+      </div>
+      <a class="btn" href="kontakt.html">Kontakt</a>
+    </div>
+    <p class="footer-meta">
+      <a href="index.html#trio">← Trio</a> · <a href="galerie.html">Galerie</a>
+    </p>
+  </footer>
+
+  <nav class="mobile-nav" aria-label="Mobilnavigation">
+    <a href="index.html#trio">Trio</a>
+    <a href="listen.html">Playlist</a>
+    <a href="about.html">Musiker</a>
+    <a href="tour.html" aria-current="page">Konzerte</a>
+    <a href="kontakt.html">Kontakt</a>
+  </nav>
+
+  <script src="concerts.js?v=20260801cms" defer></script>
+</body>
+</html>

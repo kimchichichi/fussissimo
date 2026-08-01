@@ -1,0 +1,69 @@
+{
+  "concerts": [
+    {
+      "date": "2026-09-27T19:30:00",
+      "venue": "Huttenschloss",
+      "city": "Gemünden am Main",
+      "ticket_note": "Eintritt vor Ort · Infos auf Anfrage",
+      "maps_query": "Huttenschloss Gemünden am Main"
+    },
+    {
+      "date": "2026-07-03T19:30:00",
+      "venue": "Disharmonie",
+      "city": "Schweinfurt",
+      "venue_url": "https://www.reservix.de/tickets-fussissimo-gypsy-ethno-jazz-in-schweinfurt-kulturwerkstatt-disharmonie-am-3-7-2026/e2537059"
+    },
+    {
+      "date": "2026-06-21",
+      "venue": "Umsonst & Draußen Festival",
+      "city": "Würzburg"
+    },
+    {
+      "date": "2026-05-23",
+      "venue": "Schloss Eyrichshof, Gartenfest",
+      "city": "Ebern"
+    },
+    {
+      "date": "2024-10-10T19:30:00",
+      "venue": "Schlösschen im Hofgarten",
+      "city": "Wertheim"
+    },
+    {
+      "date": "2023-10-08T20:00:00",
+      "venue": "Musik Butik",
+      "city": "Darstadt / Ochsenfurt",
+      "venue_url": "https://musik-butik.de/tag/fussissimo/"
+    },
+    {
+      "date": "2023-10-07T20:00:00",
+      "venue": "Klangmanufaktur der Hofer Symphoniker",
+      "city": "Hof"
+    },
+    {
+      "date": "2023-10-06T20:00:00",
+      "venue": "Caleidoskop",
+      "city": "Schweinfurt",
+      "venue_url": "https://drum-experience.de/event/trio-fussissimo/"
+    },
+    {
+      "date": "2023-10-05T19:00:00",
+      "venue": "Wohnstift Hallerwiese",
+      "city": "Nürnberg"
+    },
+    {
+      "date": "2022-09-15T18:30:00",
+      "venue": "Museum",
+      "city": "Wertheim"
+    },
+    {
+      "date": "2021-09-19T10:00:00",
+      "venue": "Schlösschen",
+      "city": "Wertheim"
+    },
+    {
+      "date": "2021-09-18T10:00:00",
+      "venue": "Schlösschen",
+      "city": "Wertheim"
+    }
+  ]
+}

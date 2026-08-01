@@ -1,0 +1,64 @@
+# Decap CMS — GitHub Pages
+#
+# Before first login, replace the three PLACEHOLDER values below
+# (see admin/SETUP.md).
+
+backend:
+  name: github
+  repo: USERNAME/fussissimo   # ← GitHub owner/repo
+  branch: main
+  base_url: https://YOUR-WORKER.workers.dev   # ← Cloudflare OAuth proxy (no trailing slash)
+  auth_endpoint: auth
+
+# Local preview without GitHub login:
+#   npx --yes decap-server
+# then open http://localhost:8081/admin/ with a static server on :8081
+local_backend: true
+
+media_folder: image/uploads
+# No leading slash — works for both user sites and project Pages (/repo/)
+public_folder: image/uploads
+
+locale: de
+
+collections:
+  - name: concerts
+    label: Konzerte
+    files:
+      - name: concerts
+        label: Konzerttermine
+        file: data/concerts.json
+        fields:
+          - label: Konzerte
+            name: concerts
+            widget: list
+            summary: "{{fields.date}} — {{fields.venue}}, {{fields.city}}"
+            fields:
+              - label: Datum / Uhrzeit
+                name: date
+                widget: datetime
+                date_format: YYYY-MM-DD
+                time_format: HH:mm
+                format: YYYY-MM-DDTHH:mm:ss
+                picker_utc: false
+              - label: Veranstaltungsort
+                name: venue
+                widget: string
+              - label: Stadt
+                name: city
+                widget: string
+              - label: Ticket-Hinweis
+                name: ticket_note
+                widget: string
+                required: false
+                hint: "Nur bei kommenden Konzerten (z. B. Eintritt vor Ort)"
+              - label: Maps-Suchbegriff
+                name: maps_query
+                widget: string
+                required: false
+                hint: "Leer = Venue + Stadt. Beispiel: Huttenschloss Gemünden am Main"
+              - label: Archiv-Link (optional)
+                name: venue_url
+                widget: string
+                required: false
+                hint: "Externe Seite für vergangene Konzerte"

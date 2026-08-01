@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FUSSISSIMO — Gypsy Ethno Jazz</title>
+  <meta name="description" content="Trio Fussissimo — Rehan Syed, Harald Oeler, Simon Ort. Gypsy-Ethno-Jazz." />
+  <link rel="icon" href="image/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="image/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="image/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css?v=20260801ls02" />
+  <link rel="stylesheet" href="media.css?v=20260801pub" />
+</head>
+<body class="home has-mobile-nav">
+  <header class="cover-nav">
+    <nav aria-label="Hauptnavigation">
+      <a href="#trio" data-open="trio">Trio</a>
+      <a href="listen.html">Playlist</a>
+      <a href="about.html">Musiker</a>
+      <a href="tour.html">Konzerte</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+  </header>
+
+  <!-- Screen 1: cover (PDF p.1) -->
+  <section class="screen screen-cover" id="cover" aria-label="Cover">
+    <button type="button" class="stack-btn" id="openTrio" aria-label="FUSSISSIMO — Trio öffnen">
+      <span class="stack-logo" aria-hidden="true">
+        <span class="stack-line">FUSSISSIMO</span>
+        <span class="stack-line">FUSSISSIMO</span>
+        <span class="stack-line">FUSSISSIMO</span>
+        <span class="stack-line">FUSSISSIMO</span>
+      </span>
+      <span class="cover-hint" aria-hidden="true">
+        <span class="cover-hint-label">Trio öffnen</span>
+        <span class="cover-hint-arrow">↓</span>
+      </span>
+    </button>
+    <p class="members-line">Rehan Syed&nbsp;&nbsp;|&nbsp;&nbsp;Harald Oeler&nbsp;&nbsp;|&nbsp;&nbsp;Simon Ort</p>
+  </section>
+
+  <!-- Screen 2: trio intro (PDF p.2) -->
+  <section class="screen screen-trio" id="trio" aria-label="Das Trio" aria-hidden="true">
+    <button type="button" class="back-cover" id="closeTrio" aria-label="Zurück zum Cover">←</button>
+    <div class="trio-logo" aria-label="FUSSISSIMO">FUSSISSIMO</div>
+    <figure class="trio-photo">
+      <img src="image/pdf-1.jpg" alt="Trio Fussissimo" />
+      <figcaption>© Kat Schulze</figcaption>
+    </figure>
+    <p class="trio-bio">
+      Virtuose Spieltechnik und jede Menge Inspirationen aus Jazz und
+      Weltmusik! Diese Kombination macht das Trio zu einem besonders
+      interessanten Gypsy-Ethno-Jazz Ensemble! Seit fast 20 Jahren hat
+      sich der Gitarrist und Komponist Rehan Syed mit seinen Projekten
+      einen wohlklingenden Namen in der Gypsy Jazz-Szene erspielt und
+      ist nun mit dem erstklassigen Bassisten Simon Ort am Kontrabass
+      und dem preisgekrönten Akkordeonisten Harald Oeler in einer
+      Trio-Besetzung zu hören, die es in sich hat! Zum Programm von
+      „Trio Fussissimo“ gehören originelle Eigenkompositionen von
+      Rehan Syed mit Einflüssen von Tango, Bossa, französischer
+      Musette und orientalischer Musik, und Perlen aus dem Gypsy Jazz
+      und Weltmusik Repertoire.
+    </p>
+    <p class="members-line trio-members"><a href="about/rehansyed.html">Rehan Syed</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="about/haraldoeler.html">Harald Oeler</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="about/simonort.html">Simon Ort</a></p>
+    <div class="trio-links">
+      <a href="listen.html">Playlist</a>
+      <a href="about.html">Musiker</a>
+      <a href="tour.html">Konzerte</a>
+      <a href="kontakt.html">Kontakt</a>
+    </div>
+  </section>
+
+  <nav class="mobile-nav" aria-label="Mobilnavigation">
+    <a href="#trio" data-open="trio">Trio</a>
+    <a href="listen.html">Playlist</a>
+    <a href="about.html">Musiker</a>
+    <a href="tour.html">Konzerte</a>
+    <a href="kontakt.html">Kontakt</a>
+  </nav>
+
+  <script>
+    const body = document.body;
+    const openBtn = document.getElementById("openTrio");
+    const closeBtn = document.getElementById("closeTrio");
+    const trio = document.getElementById("trio");
+    const trioLogo = trio.querySelector(".trio-logo");
+    const stackLogo = openBtn.querySelector(".stack-logo");
+    const stackFirstLine = openBtn.querySelector(".stack-line");
+    const trioNavLinks = document.querySelectorAll('a[href="#trio"]');
+    const MORPH_MS = 400;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let locked = false;
+    let morphTimer = 0;
+
+    function setTrioCurrent(on) {
+      trioNavLinks.forEach((a) => {
+        if (on) a.setAttribute("aria-current", "page");
+        else a.removeAttribute("aria-current");
+      });
+    }
+
+    function clearMorphStyles() {
+      openBtn.style.transition = "";
+      openBtn.style.transform = "";
+      openBtn.style.transformOrigin = "";
+      body.classList.remove("is-morphing");
+    }
+
+    function finishOpen() {
+      clearMorphStyles();
+      body.classList.add("is-open");
+      trio.setAttribute("aria-hidden", "false");
+      setTrioCurrent(true);
+      history.replaceState(null, "", "#trio");
+      closeBtn.focus();
+    }
+
+    function openTrio(opts) {
+      if (locked || body.classList.contains("is-open")) return;
+      const withMorph = opts && opts.morph && !reduceMotion.matches;
+
+      if (!withMorph) {
+        finishOpen();
+        return;
+      }
+
+      locked = true;
+      const btnRect = openBtn.getBoundingClientRect();
+      const stackRect = (stackFirstLine || stackLogo).getBoundingClientRect();
+      // Morph from the top wordmark row (~1/4 of the stacked logo).
+      const from = {
+        left: stackRect.left,
+        top: stackRect.top,
+        width: stackRect.width,
+        height: stackRect.height,
+      };
+
+      // Measure trio logo at its open layout (closed screen is offset/scaled).
+      const trioPrev = {
+        transition: trio.style.transition,
+        opacity: trio.style.opacity,
+        filter: trio.style.filter,
+        transform: trio.style.transform,
+        pointerEvents: trio.style.pointerEvents,
+      };
+      trio.style.transition = "none";
+      trio.style.opacity = "0";
+      trio.style.filter = "none";
+      trio.style.transform = "translateX(-50%) translateY(0) scale(1)";
+      trio.style.pointerEvents = "none";
+      const to = trioLogo.getBoundingClientRect();
+      trio.style.transition = trioPrev.transition;
+      trio.style.opacity = trioPrev.opacity;
+      trio.style.filter = trioPrev.filter;
+      trio.style.transform = trioPrev.transform;
+      trio.style.pointerEvents = trioPrev.pointerEvents;
+
+      const originX = from.left + from.width / 2 - btnRect.left;
+      const originY = from.top + from.height / 2 - btnRect.top;
+      const dx = to.left + to.width / 2 - (from.left + from.width / 2);
+      const dy = to.top + to.height / 2 - (from.top + from.height / 2);
+      const scale = Math.max(0.12, to.width / from.width);
+
+      body.classList.add("is-morphing");
+      openBtn.style.transformOrigin = originX + "px " + originY + "px";
+      openBtn.style.transition = "none";
+      openBtn.style.transform = "translate(0, 0) scale(1)";
+      void openBtn.offsetWidth;
+      openBtn.style.transition =
+        "transform " + MORPH_MS + "ms cubic-bezier(0.22, 1, 0.36, 1)";
+      openBtn.style.transform =
+        "translate(" + dx + "px, " + dy + "px) scale(" + scale + ")";
+
+      clearTimeout(morphTimer);
+      morphTimer = setTimeout(() => {
+        finishOpen();
+        locked = false;
+      }, MORPH_MS);
+    }
+
+    function closeTrio() {
+      if (locked) return;
+      clearTimeout(morphTimer);
+      clearMorphStyles();
+      body.classList.remove("is-open");
+      trio.setAttribute("aria-hidden", "true");
+      setTrioCurrent(false);
+      history.replaceState(null, "", window.location.pathname);
+      openBtn.focus();
+    }
+
+    openBtn.addEventListener("click", () => openTrio({ morph: true }));
+    closeBtn.addEventListener("click", closeTrio);
+
+    document.querySelectorAll("[data-open='trio']").forEach((el) => {
+      el.addEventListener("click", (e) => {
+        e.preventDefault();
+        openTrio({ morph: false });
+      });
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && (body.classList.contains("is-open") || locked)) {
+        e.preventDefault();
+        if (locked) {
+          clearTimeout(morphTimer);
+          locked = false;
+          finishOpen();
+        }
+        closeTrio();
+        return;
+      }
+      if (
+        (e.key === "Enter" || e.key === " ") &&
+        !body.classList.contains("is-open") &&
+        !locked
+      ) {
+        const t = e.target;
+        if (t === openBtn) return;
+        if (t.closest && (t.closest("a") || t.closest("button"))) return;
+        e.preventDefault();
+        openTrio({ morph: true });
+      }
+    });
+
+    if (location.hash === "#trio") openTrio({ morph: false });
+  </script>
+</body>
+</html>

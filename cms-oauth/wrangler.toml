@@ -1,0 +1,9 @@
+name = "fussissimo-decap-oauth"
+main = "worker.js"
+compatibility_date = "2026-08-01"
+
+# Set secrets after deploy:
+#   npx wrangler secret put GITHUB_CLIENT_ID
+#   npx wrangler secret put GITHUB_CLIENT_SECRET
+# Optional (private repo only):
+#   npx wrangler secret put GITHUB_REPO_PRIVATE   # value: 1

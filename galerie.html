@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galerie — FUSSISSIMO</title>
+  <meta name="description" content="Pressefotos Trio FUSSISSIMO — Gruppenbild und Porträts. Fotos © Kat Schulze." />
+  <link rel="icon" href="image/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="image/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="image/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css?v=20260801ls02" />
+  <link rel="stylesheet" href="media.css?v=20260801pub" />
+</head>
+<body class="has-mobile-nav">
+  <div class="topbar">
+    <a class="topbar-brand wordmark" href="index.html" aria-label="Zur Startseite">FUSSISSIMO</a>
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a href="index.html#trio">Trio</a>
+      <a href="listen.html">Playlist</a>
+      <a href="about.html">Musiker</a>
+      <a href="tour.html">Konzerte</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+  </div>
+
+  <header class="page-header page-header--solo">
+    <div class="page-title">
+      <h1>Galerie</h1>
+      <p>Pressefotos · © Kat Schulze</p>
+      <div class="btn-row" style="justify-content:flex-start;margin-top:0.75rem">
+        <a class="btn btn-ghost" href="image/fussissimo.webp" download>Gruppenfoto</a>
+        <a class="btn btn-ghost" href="mailto:info@rehansyed.de?subject=Pressefotos%20FUSSISSIMO">HD anfragen</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="galerie">
+      <img class="group" src="image/fussissimo.webp" alt="Trio Fussissimo" data-full="image/fussissimo.webp" />
+      <img src="image/colorRehan.webp" alt="Rehan Syed" data-full="image/colorRehan.webp" />
+      <img src="image/colorHarald.webp" alt="Harald Oeler" data-full="image/colorHarald.webp" />
+      <img src="image/colorSimon.webp" alt="Simon Ort" data-full="image/colorSimon.webp" />
+      <img src="image/Rehan.webp" alt="Rehan Syed" data-full="image/Rehan.webp" />
+      <img src="image/Harald.webp" alt="Harald Oeler" data-full="image/Harald.webp" />
+      <img src="image/Simon.webp" alt="Simon Ort" data-full="image/Simon.webp" />
+    </div>
+  </section>
+
+  <div id="myModal" class="modal" role="dialog" aria-modal="true" aria-label="Bildansicht">
+    <button type="button" class="close" aria-label="Schließen">&times;</button>
+    <div class="modal-content"><img id="modalImage" alt="" /></div>
+    <div class="modal-nav">
+      <button type="button" class="btn" id="prevBtn">Zurück</button>
+      <button type="button" class="btn" id="nextBtn">Weiter</button>
+    </div>
+  </div>
+
+
+  <nav class="mobile-nav" aria-label="Mobilnavigation">
+    <a href="index.html#trio">Trio</a>
+    <a href="listen.html">Playlist</a>
+    <a href="about.html">Musiker</a>
+    <a href="tour.html">Konzerte</a>
+    <a href="kontakt.html">Kontakt</a>
+  </nav>
+
+  <script>
+    const modal = document.getElementById("myModal");
+    const modalImg = document.getElementById("modalImage");
+    const images = Array.from(document.querySelectorAll(".galerie img"));
+    let currentIndex = 0;
+    let touchX = null;
+
+    function openModal(index) {
+      currentIndex = index;
+      modalImg.src = images[currentIndex].dataset.full;
+      modalImg.alt = images[currentIndex].alt;
+      modal.classList.add("open");
+    }
+    function closeModal() {
+      modal.classList.remove("open");
+      modalImg.removeAttribute("src");
+      modalImg.alt = "";
+    }
+
+    images.forEach((img, i) => img.addEventListener("click", () => openModal(i)));
+    document.querySelector(".close").addEventListener("click", closeModal);
+    document.getElementById("prevBtn").addEventListener("click", () =>
+      openModal((currentIndex - 1 + images.length) % images.length)
+    );
+    document.getElementById("nextBtn").addEventListener("click", () =>
+      openModal((currentIndex + 1) % images.length)
+    );
+    modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener("keydown", (e) => {
+      if (!modal.classList.contains("open")) return;
+      if (e.key === "Escape") closeModal();
+      if (e.key === "ArrowLeft") openModal((currentIndex - 1 + images.length) % images.length);
+      if (e.key === "ArrowRight") openModal((currentIndex + 1) % images.length);
+    });
+    modal.addEventListener("touchstart", (e) => { touchX = e.changedTouches[0].screenX; }, { passive: true });
+    modal.addEventListener("touchend", (e) => {
+      if (touchX == null) return;
+      const dx = e.changedTouches[0].screenX - touchX;
+      if (Math.abs(dx) > 50) {
+        if (dx > 0) openModal((currentIndex - 1 + images.length) % images.length);
+        else openModal((currentIndex + 1) % images.length);
+      }
+      touchX = null;
+    }, { passive: true });
+  </script>
+</body>
+</html>
