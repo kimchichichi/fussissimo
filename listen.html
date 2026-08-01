@@ -11,8 +11,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="index.css?v=20260801navfix" />
-  <link rel="stylesheet" href="media.css?v=20260801navfix" />
+  <link rel="stylesheet" href="index.css?v=20260801playtxt" />
+  <link rel="stylesheet" href="media.css?v=20260801playtxt" />
 </head>
 <body>
   <div class="topbar">
@@ -61,67 +61,67 @@
       <ul class="track-list is-pending" id="tracks" aria-busy="true">
         <li id="Bossa9" class="active" aria-current="true" data-src="https://www.youtube.com/embed/j1U5qDVxmUQ" tabindex="0">
           <span class="track-num">01</span>
-          <span class="play-ico" aria-hidden="true">▌▌</span>
+          <span class="play-ico play-ico--pause" aria-hidden="true"></span>
           <span class="track-name">Bossa 9</span>
           <span class="track-dur">6:24</span>
         </li>
         <li id="Aman" data-src="https://www.youtube.com/embed/WkxEwOPyBnw" tabindex="0">
           <span class="track-num">02</span>
-          <span class="play-ico" aria-hidden="true">▶</span>
+          <span class="play-ico play-ico--play" aria-hidden="true"></span>
           <span class="track-name">Aman</span>
           <span class="track-dur">5:20</span>
         </li>
         <li id="FürMara" data-src="https://www.youtube.com/embed/0TYQhb9glyc" tabindex="0">
           <span class="track-num">03</span>
-          <span class="play-ico" aria-hidden="true">▶</span>
+          <span class="play-ico play-ico--play" aria-hidden="true"></span>
           <span class="track-name">Für Mara</span>
           <span class="track-dur">4:18</span>
         </li>
         <li id="Poinciana" data-src="https://www.youtube.com/embed/RBpnWuj-tyU" tabindex="0">
           <span class="track-num">04</span>
-          <span class="play-ico" aria-hidden="true">▶</span>
+          <span class="play-ico play-ico--play" aria-hidden="true"></span>
           <span class="track-name">Poinciana</span>
           <span class="track-dur">8:32</span>
         </li>
         <li id="Fussissimo" data-src="https://www.youtube.com/embed/Ii5aOikHhxw" tabindex="0">
           <span class="track-num">05</span>
-          <span class="play-ico" aria-hidden="true">▶</span>
+          <span class="play-ico play-ico--play" aria-hidden="true"></span>
           <span class="track-name">Fussissimo</span>
           <span class="track-dur">3:18</span>
         </li>
         <li id="MadeInFrance" data-src="https://www.youtube.com/embed/TsTN3AgrpbU" tabindex="0">
           <span class="track-num">06</span>
-          <span class="play-ico" aria-hidden="true">▶</span>
+          <span class="play-ico play-ico--play" aria-hidden="true"></span>
           <span class="track-name">Made in France</span>
           <span class="track-dur">5:24</span>
         </li>
         <li id="SiTuSavais" data-src="https://www.youtube.com/embed/25k0cR0Aqt0" tabindex="0">
           <span class="track-num">07</span>
-          <span class="play-ico" aria-hidden="true">▶</span>
+          <span class="play-ico play-ico--play" aria-hidden="true"></span>
           <span class="track-name">Si Tu Savais</span>
           <span class="track-dur">5:24</span>
         </li>
         <li id="PuppetBounce" data-src="https://www.youtube.com/embed/yjdyFI8O5iY" tabindex="0">
           <span class="track-num">08</span>
-          <span class="play-ico" aria-hidden="true">▶</span>
+          <span class="play-ico play-ico--play" aria-hidden="true"></span>
           <span class="track-name">Puppet Bounce</span>
           <span class="track-dur">5:54</span>
         </li>
         <li id="GreetingsFromMars" data-src="https://www.youtube.com/embed/feK_Tt9ehPA" tabindex="0">
           <span class="track-num">09</span>
-          <span class="play-ico" aria-hidden="true">▶</span>
+          <span class="play-ico play-ico--play" aria-hidden="true"></span>
           <span class="track-name">Greetings From Mars</span>
           <span class="track-dur">4:17</span>
         </li>
         <li id="Masir" data-src="https://www.youtube.com/embed/oB_0M43pp1E" tabindex="0">
           <span class="track-num">10</span>
-          <span class="play-ico" aria-hidden="true">▶</span>
+          <span class="play-ico play-ico--play" aria-hidden="true"></span>
           <span class="track-name">Masir</span>
           <span class="track-dur">9:33</span>
         </li>
         <li id="DouceAmbiance" data-src="https://www.youtube.com/embed/ktq8lMX51zs" tabindex="0">
           <span class="track-num">11</span>
-          <span class="play-ico" aria-hidden="true">▶</span>
+          <span class="play-ico play-ico--play" aria-hidden="true"></span>
           <span class="track-name">Douce Ambiance</span>
           <span class="track-dur">5:30</span>
         </li>
@@ -188,8 +188,10 @@
       items.forEach((el) => {
         const ico = el.querySelector(".play-ico");
         if (!ico) return;
-        if (el === activeItem && playing) ico.textContent = "▌▌";
-        else ico.textContent = "▶";
+        const isPause = el === activeItem && playing;
+        ico.classList.toggle("play-ico--pause", isPause);
+        ico.classList.toggle("play-ico--play", !isPause);
+        ico.textContent = "";
       });
     }
 

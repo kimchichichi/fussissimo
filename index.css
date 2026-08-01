@@ -630,34 +630,55 @@ a.meta-card:hover {
   border-bottom: 1px solid var(--blue-soft);
 }
 
+.tour-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
 .tour-item.next {
   display: grid;
-  grid-template-columns: auto 1fr auto;
-  grid-template-areas:
-    "badge scan actions"
-    ". meta actions";
+  grid-template-columns: minmax(0, 1fr) minmax(11rem, max-content);
+  gap: 0.75rem 1.25rem;
   border: 1.5px solid var(--blue);
-  padding: 1.1rem 1.15rem;
+  padding: 1rem 1.15rem;
   margin-bottom: 0.75rem;
   background: color-mix(in srgb, var(--blue) 5%, var(--cream));
-  align-items: start;
+  align-items: center;
   animation: rise 0.9s cubic-bezier(0.2, 0.85, 0.2, 1) both;
 }
 
+.tour-item.next .tour-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
 .tour-item.next .badge {
-  grid-area: badge;
+  margin: 0;
+  align-self: center;
+  flex-shrink: 0;
 }
 
 .tour-item.next .tour-scan {
-  grid-area: scan;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.7rem;
 }
 
 .tour-item.next .tour-meta {
-  grid-area: meta;
+  margin: 0;
+  gap: 0.35rem 0.85rem;
 }
 
 .tour-item.next .tour-actions {
-  grid-area: actions;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-self: center;
 }
 
 .tour-item.past {
@@ -709,7 +730,8 @@ a.meta-card:hover {
 }
 
 .tour-item.next .tour-date {
-  font-size: 1.25rem;
+  font-size: 1.22rem;
+  line-height: 1.2;
 }
 
 .tour-when {
@@ -740,21 +762,21 @@ a.meta-card:hover {
   overflow-wrap: anywhere;
 }
 
-.tour-item.next .tour-scan {
-  display: grid;
-  grid-template-columns: auto auto;
-  gap: 0.2rem 1rem;
-  align-items: baseline;
-}
-
 .tour-item.next .tour-venue,
 .tour-item.next .tour-city {
-  grid-column: 1 / -1;
+  flex: 1 1 100%;
+  width: 100%;
 }
 
 .tour-item.next .tour-venue {
-  font-size: 0.95rem;
-  margin-top: 0.15rem;
+  font-size: 0.98rem;
+  margin-top: 0.35rem;
+  line-height: 1.3;
+}
+
+.tour-item.next .tour-city {
+  margin-top: 0;
+  line-height: 1.35;
 }
 
 .tour-meta {
@@ -778,6 +800,24 @@ a.meta-card:hover {
   text-decoration: none;
 }
 
+.tour-item.next .tour-maps {
+  width: auto;
+  height: auto;
+  min-width: 0;
+  min-height: 36px;
+  padding: 0.1rem 0;
+  gap: 0.35rem;
+  justify-content: flex-start;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tour-item.next .tour-maps::after {
+  content: "Karte";
+}
+
 .tour-maps .icon,
 .tour-maps svg.lucide {
   width: 1.1rem;
@@ -794,6 +834,11 @@ a.meta-card:hover {
   letter-spacing: 0.04em;
   color: var(--muted);
   text-transform: none;
+  line-height: 1.4;
+}
+
+.tour-item.next .tour-ticket-note {
+  flex: 1 1 10rem;
 }
 
 .tour-actions {
@@ -802,6 +847,12 @@ a.meta-card:hover {
   gap: 0.35rem;
   align-items: stretch;
   flex-shrink: 0;
+}
+
+.tour-item.next .tour-actions .btn {
+  min-height: 42px;
+  padding: 0.45rem 0.95rem;
+  font-size: 0.66rem;
 }
 
 .tour-actions .btn {
@@ -1053,18 +1104,39 @@ a.meta-card:hover {
 
 .track-list .play-ico {
   width: 1.4rem;
-  text-align: center;
+  height: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.14rem;
   opacity: 0.45;
-  font-size: 0.8rem;
   flex-shrink: 0;
   transition: opacity 0.2s, transform 0.2s, color 0.2s;
+}
+
+.track-list .play-ico--play::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0.32rem 0 0.32rem 0.52rem;
+  border-color: transparent transparent transparent currentColor;
+}
+
+.track-list .play-ico--pause::before,
+.track-list .play-ico--pause::after {
+  content: "";
+  display: block;
+  width: 0.18rem;
+  height: 0.62rem;
+  background: currentColor;
 }
 
 .track-list li.active .play-ico {
   opacity: 1;
   color: var(--blue);
   transform: scale(1.12);
-  font-weight: 800;
 }
 
 .track-name {
@@ -2486,10 +2558,11 @@ body.home .screen-trio {
 }
 
 body.home .back-cover {
-  position: absolute;
+  /* Fixed to viewport corner so it stays clear of the centered cover-nav */
+  position: fixed;
   top: 1rem;
   left: 1rem;
-  z-index: 5;
+  z-index: 45;
   width: 44px;
   height: 44px;
   min-width: 44px;
@@ -2665,16 +2738,20 @@ body.home.is-open .screen-cover {
 }
 
 body.home.is-open .screen-trio {
-  /* In-flow so tall content grows the page; body/html scroll when .is-open */
+  /* In-flow so tall content grows the page; body/html scroll when .is-open.
+     Clear absolute-centering (left/translateX) — margin:auto centers in flow. */
   position: relative;
   top: auto;
+  left: auto;
   right: auto;
   bottom: auto;
   height: auto;
   max-height: none;
   overflow: visible;
+  margin-left: auto;
+  margin-right: auto;
   opacity: 1;
-  transform: translateX(-50%) translateY(0) scale(1);
+  transform: translateY(0) scale(1);
   filter: blur(0);
   pointer-events: auto;
   z-index: 3;
@@ -2779,7 +2856,7 @@ body.home.is-open .cover-nav .nav-toggle {
   }
 
   body.home.is-open .screen-trio {
-    transform: translateX(-50%) !important;
+    transform: none !important;
     filter: none !important;
   }
 

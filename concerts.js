@@ -225,9 +225,11 @@
     scan.appendChild(el("span", "tour-when", formatWhen(iso)));
     scan.appendChild(renderVenue(concert, isPast));
     scan.appendChild(el("span", "tour-city", concert.city || ""));
-    article.appendChild(scan);
 
     if (!isPast) {
+      var info = el("div", "tour-info");
+      info.appendChild(scan);
+
       var meta = el("p", "tour-meta");
       var maps = el("a", "tour-maps");
       maps.href = mapsHref(concert);
@@ -238,10 +240,10 @@
       maps.appendChild(icon("map-pin"));
       meta.appendChild(maps);
       if (concert.ticket_note) {
-        meta.appendChild(document.createTextNode(" "));
         meta.appendChild(el("span", "tour-ticket-note", concert.ticket_note));
       }
-      article.appendChild(meta);
+      info.appendChild(meta);
+      article.appendChild(info);
 
       var actions = el("div", "tour-actions");
       var ticket = el("a", "btn");
@@ -271,6 +273,8 @@
         actions.appendChild(cal);
       }
       article.appendChild(actions);
+    } else {
+      article.appendChild(scan);
     }
 
     return article;
@@ -334,6 +338,11 @@
     if (meta) meta.remove();
     var actions = item.querySelector(".tour-actions");
     if (actions) actions.remove();
+    var info = item.querySelector(".tour-info");
+    if (info) {
+      while (info.firstChild) item.insertBefore(info.firstChild, info);
+      info.remove();
+    }
 
     var group = ensureYearGroup(yearOf(iso));
     var siblings = group.querySelectorAll(".tour-item[data-concert-date]");
@@ -371,7 +380,9 @@
       var b = document.createElement("span");
       b.className = "badge";
       b.textContent = "Nächstes";
-      item.insertBefore(b, item.firstChild);
+      var scan = item.querySelector(".tour-scan");
+      if (scan) scan.insertBefore(b, scan.firstChild);
+      else item.insertBefore(b, item.firstChild);
     }
   }
 
