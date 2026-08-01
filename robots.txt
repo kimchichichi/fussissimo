@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /cms-oauth/
+
+Sitemap: https://www.fussissimo.de/sitemap.xml

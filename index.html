@@ -3,8 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FUSSISSIMO — Gypsy Ethno Jazz</title>
-  <meta name="description" content="Trio Fussissimo — Rehan Syed, Harald Oeler, Simon Ort. Gypsy-Ethno-Jazz." />
+  <script>
+    (function () {
+      var path = location.pathname;
+      if (/\/index\.html$/i.test(path)) {
+        history.replaceState(null, "", path.replace(/\/index\.html$/i, "/") + location.search + location.hash);
+      }
+    })();
+  </script>
+  <title>FUSSISSIMO — Gypsy Ethno Jazz Trio | Würzburg</title>
+  <meta name="description" content="FUSSISSIMO ist ein Gypsy-Ethno-Jazz Trio aus Würzburg: Rehan Syed (Gitarre), Harald Oeler (Akkordeon), Simon Ort (Kontrabass). Konzerte, Playlist und Buchung." />
+  <meta name="keywords" content="Fussissimo, Trio Fussissimo, Gypsy Jazz, Ethno Jazz, Rehan Syed, Harald Oeler, Simon Ort, Würzburg, Konzert" />
+  <link rel="canonical" href="https://www.fussissimo.de/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:site_name" content="FUSSISSIMO" />
+  <meta property="og:url" content="https://www.fussissimo.de/" />
+  <meta property="og:title" content="FUSSISSIMO — Gypsy Ethno Jazz Trio" />
+  <meta property="og:description" content="Gypsy-Ethno-Jazz mit Rehan Syed, Harald Oeler und Simon Ort. Konzerte, Playlist und Buchung." />
+  <meta property="og:image" content="https://www.fussissimo.de/image/pdf-1.jpg" />
+  <meta property="og:image:alt" content="Trio FUSSISSIMO" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FUSSISSIMO — Gypsy Ethno Jazz Trio" />
+  <meta name="twitter:description" content="Gypsy-Ethno-Jazz mit Rehan Syed, Harald Oeler und Simon Ort." />
+  <meta name="twitter:image" content="https://www.fussissimo.de/image/pdf-1.jpg" />
   <link rel="icon" href="image/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="image/favicon.ico" sizes="any" />
   <link rel="apple-touch-icon" href="image/apple-touch-icon.png" />
@@ -13,8 +35,39 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="index.css?v=20260801navfix" />
   <link rel="stylesheet" href="media.css?v=20260801navfix" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "name": "FUSSISSIMO",
+    "alternateName": ["Trio Fussissimo", "Fussissimo"],
+    "url": "https://www.fussissimo.de/",
+    "image": "https://www.fussissimo.de/image/pdf-1.jpg",
+    "description": "Gypsy-Ethno-Jazz Trio aus Würzburg mit Rehan Syed, Harald Oeler und Simon Ort.",
+    "genre": ["Gypsy Jazz", "Ethno Jazz", "Weltmusik"],
+    "email": "info@rehansyed.de",
+    "telephone": "+49-177-6007095",
+    "sameAs": [
+      "https://www.instagram.com/fussissimo",
+      "http://rehansyed.com/Trio_Fussissimo"
+    ],
+    "member": [
+      { "@type": "Person", "name": "Rehan Syed", "url": "https://www.fussissimo.de/about/rehansyed.html" },
+      { "@type": "Person", "name": "Harald Oeler", "url": "https://www.fussissimo.de/about/haraldoeler.html" },
+      { "@type": "Person", "name": "Simon Ort", "url": "https://www.fussissimo.de/about/simonort.html" }
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Hartmannstraße 19",
+      "addressLocality": "Würzburg",
+      "postalCode": "97082",
+      "addressCountry": "DE"
+    }
+  }
+  </script>
 </head>
 <body class="home">
+  <h1 class="sr-only">FUSSISSIMO — Gypsy Ethno Jazz Trio</h1>
   <header class="cover-nav">
     <a class="cover-brand wordmark" href="#cover" aria-label="FUSSISSIMO — Cover">FUSSISSIMO</a>
     <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menü öffnen">
