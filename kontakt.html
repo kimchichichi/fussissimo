@@ -4,24 +4,32 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kontakt — FUSSISSIMO</title>
-  <meta name="description" content="Buchung und Künstler-Kontakt Trio FUSSISSIMO — Rehan Syed, Hartmannstraße 19, 97082 Würzburg. Telefon und E-Mail. Pressemappe als PDF." />
+  <meta name="description" content="Buchung und Künstler-Kontakt Trio FUSSISSIMO — Rehan Syed, Hartmannstraße 19, 97082 Würzburg. Telefon, E-Mail und Instagram. Pressemappe als PDF." />
   <link rel="icon" href="image/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="image/favicon.ico" sizes="any" />
   <link rel="apple-touch-icon" href="image/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="index.css?v=20260801ls02" />
-  <link rel="stylesheet" href="media.css?v=20260801pub" />
+  <link rel="stylesheet" href="index.css?v=20260801icons" />
+  <link rel="stylesheet" href="media.css?v=20260801icons" />
 </head>
-<body class="has-mobile-nav">
+<body>
   <div class="topbar">
     <a class="topbar-brand wordmark" href="index.html" aria-label="Zur Startseite">FUSSISSIMO</a>
-    <nav class="nav" aria-label="Hauptnavigation">
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menü öffnen">
+    <span class="nav-toggle-box" aria-hidden="true">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </span>
+    </button>
+    <nav class="nav" id="site-nav" aria-label="Hauptnavigation">
       <a href="index.html#trio">Trio</a>
       <a href="listen.html">Playlist</a>
       <a href="about.html">Musiker</a>
       <a href="tour.html">Konzerte</a>
+      <a href="galerie.html">Galerie</a>
       <a href="kontakt.html" aria-current="page">Kontakt</a>
     </nav>
   </div>
@@ -39,7 +47,7 @@
           <h2 class="contact-person">Rehan Syed</h2>
           <p class="contact-role">Buchung &amp; Künstler-Kontakt</p>
           <p class="contact-next">
-            <a href="tour.html">Nächstes: 27.09.2026 · Gemünden →</a>
+            <a class="icon-link" href="tour.html"><span>Nächstes: 27.09.2026 · Gemünden</span><i data-lucide="arrow-right"></i></a>
           </p>
         </div>
 
@@ -49,23 +57,43 @@
             Bitte Datum, Ort und Veranstaltungsart angeben.
           </p>
           <a
-            class="btn"
+            class="btn btn-with-icon"
             href="mailto:info@rehansyed.de?subject=Buchung%20FUSSISSIMO&body=Datum%3A%0AOrt%3A%0AVeranstaltungsart%3A%0A"
-          >Anfragen</a>
+          ><i data-lucide="mail"></i><span>Anfragen</span></a>
         </div>
 
         <div class="contact-actions" role="list">
           <a class="contact-action" href="tel:+491776007095" role="listitem">
+            <span class="contact-ico" aria-hidden="true"><i data-lucide="phone"></i></span>
             <span class="contact-label">Telefon</span>
             <span class="contact-value">+49 177 6007095</span>
           </a>
           <a class="contact-action" href="mailto:info@rehansyed.de" role="listitem">
+            <span class="contact-ico" aria-hidden="true"><i data-lucide="mail"></i></span>
             <span class="contact-label">E-Mail</span>
             <span class="contact-value">info@rehansyed.de</span>
+          </a>
+          <a
+            class="contact-action"
+            href="https://www.instagram.com/fussissimo"
+            target="_blank"
+            rel="noopener noreferrer"
+            role="listitem"
+          >
+            <span class="contact-ico" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true" focusable="false">
+                <rect x="2.5" y="2.5" width="19" height="19" rx="5" />
+                <circle cx="12" cy="12" r="4.25" />
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+              </svg>
+            </span>
+            <span class="contact-label">Instagram</span>
+            <span class="contact-value">@fussissimo</span>
           </a>
         </div>
 
         <address class="contact-address">
+          <span class="contact-ico" aria-hidden="true"><i data-lucide="map-pin"></i></span>
           <span class="contact-label">Adresse</span>
           <a
             class="contact-address-link"
@@ -83,7 +111,7 @@
           <p class="contact-hint">
             Pressemappe (PDF) · Trio, Bios, Fotos · ca. 4 MB
           </p>
-          <a class="btn btn-ghost" href="fussissimo.pdf" download="FUSSISSIMO.pdf">PDF herunterladen</a>
+          <a class="btn btn-ghost btn-with-icon" href="fussissimo.pdf" download="FUSSISSIMO.pdf"><i data-lucide="download"></i><span>PDF herunterladen</span></a>
         </div>
       </div>
 
@@ -100,12 +128,8 @@
     </div>
   </section>
 
-  <nav class="mobile-nav" aria-label="Mobilnavigation">
-    <a href="index.html#trio">Trio</a>
-    <a href="listen.html">Playlist</a>
-    <a href="about.html">Musiker</a>
-    <a href="tour.html">Konzerte</a>
-    <a href="kontakt.html" aria-current="page">Kontakt</a>
-  </nav>
+  <script src="https://unpkg.com/lucide@0.511.0" defer></script>
+  <script src="icons.js?v=20260801icons" defer></script>
+  <script src="nav.js?v=20260801hamb3" defer></script>
 </body>
 </html>

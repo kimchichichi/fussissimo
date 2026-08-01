@@ -11,16 +11,24 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="index.css?v=20260801ls02" />
-  <link rel="stylesheet" href="media.css?v=20260801pub" />
+  <link rel="stylesheet" href="index.css?v=20260801icons" />
+  <link rel="stylesheet" href="media.css?v=20260801icons" />
 </head>
-<body class="home has-mobile-nav">
+<body class="home">
   <header class="cover-nav">
-    <nav aria-label="Hauptnavigation">
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menü öffnen">
+    <span class="nav-toggle-box" aria-hidden="true">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </span>
+    </button>
+    <nav class="nav" id="site-nav" aria-label="Hauptnavigation">
       <a href="#trio" data-open="trio">Trio</a>
       <a href="listen.html">Playlist</a>
       <a href="about.html">Musiker</a>
       <a href="tour.html">Konzerte</a>
+      <a href="galerie.html">Galerie</a>
       <a href="kontakt.html">Kontakt</a>
     </nav>
   </header>
@@ -36,7 +44,7 @@
       </span>
       <span class="cover-hint" aria-hidden="true">
         <span class="cover-hint-label">Trio öffnen</span>
-        <span class="cover-hint-arrow">↓</span>
+        <span class="cover-hint-arrow" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
       </span>
     </button>
     <p class="members-line">Rehan Syed&nbsp;&nbsp;|&nbsp;&nbsp;Harald Oeler&nbsp;&nbsp;|&nbsp;&nbsp;Simon Ort</p>
@@ -44,7 +52,7 @@
 
   <!-- Screen 2: trio intro (PDF p.2) -->
   <section class="screen screen-trio" id="trio" aria-label="Das Trio" aria-hidden="true">
-    <button type="button" class="back-cover" id="closeTrio" aria-label="Zurück zum Cover">←</button>
+    <button type="button" class="back-cover" id="closeTrio" aria-label="Zurück zum Cover"><i data-lucide="arrow-left"></i></button>
     <div class="trio-logo" aria-label="FUSSISSIMO">FUSSISSIMO</div>
     <figure class="trio-photo">
       <img src="image/pdf-1.jpg" alt="Trio Fussissimo" />
@@ -69,17 +77,11 @@
       <a href="listen.html">Playlist</a>
       <a href="about.html">Musiker</a>
       <a href="tour.html">Konzerte</a>
+      <a href="galerie.html">Galerie</a>
       <a href="kontakt.html">Kontakt</a>
     </div>
   </section>
 
-  <nav class="mobile-nav" aria-label="Mobilnavigation">
-    <a href="#trio" data-open="trio">Trio</a>
-    <a href="listen.html">Playlist</a>
-    <a href="about.html">Musiker</a>
-    <a href="tour.html">Konzerte</a>
-    <a href="kontakt.html">Kontakt</a>
-  </nav>
 
   <script>
     const body = document.body;
@@ -228,5 +230,8 @@
 
     if (location.hash === "#trio") openTrio({ morph: false });
   </script>
+  <script src="https://unpkg.com/lucide@0.511.0" defer></script>
+  <script src="icons.js?v=20260801icons" defer></script>
+  <script src="nav.js?v=20260801hamb3" defer></script>
 </body>
 </html>

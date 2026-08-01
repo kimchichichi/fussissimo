@@ -157,10 +157,37 @@
     return node;
   }
 
+  function icon(name) {
+    if (window.FUSSIcons && typeof FUSSIcons.make === "function") {
+      return FUSSIcons.make(name);
+    }
+    var i = document.createElement("i");
+    i.setAttribute("data-lucide", name);
+    i.setAttribute("aria-hidden", "true");
+    return i;
+  }
+
+  function refreshIcons(root) {
+    if (window.FUSSIcons && typeof FUSSIcons.refresh === "function") {
+      FUSSIcons.refresh(root);
+    }
+  }
+
+  function withIcon(node, name, labelText) {
+    node.classList.add("btn-with-icon");
+    node.appendChild(icon(name));
+    if (labelText != null) {
+      var span = document.createElement("span");
+      span.textContent = labelText;
+      node.appendChild(span);
+    }
+    return node;
+  }
+
   function renderVenue(concert, isPast) {
     var venueWrap = el("span", "tour-venue");
     if (isPast && concert.venue_url) {
-      var a = el("a", "link-ext link-ext--archive", concert.venue || "");
+      var a = el("a", "link-ext link-ext--archive", null);
       a.href = concert.venue_url;
       a.target = "_blank";
       a.rel = "noopener noreferrer";
@@ -168,6 +195,8 @@
         "aria-label",
         "Archiv: " + (concert.venue || "") + ", " + (concert.city || "") + " — externe Seite"
       );
+      a.appendChild(document.createTextNode(concert.venue || ""));
+      a.appendChild(icon("external-link"));
       venueWrap.appendChild(a);
       var tag = el("span", "tour-archiv-tag");
       tag.setAttribute("aria-hidden", "true");
@@ -197,10 +226,13 @@
 
     if (!isPast) {
       var meta = el("p", "tour-meta");
-      var maps = el("a", "tour-maps", "Wegbeschreibung");
+      var maps = el("a", "tour-maps");
       maps.href = mapsHref(concert);
       maps.target = "_blank";
       maps.rel = "noopener noreferrer";
+      maps.setAttribute("aria-label", "Wegbeschreibung");
+      maps.title = "Wegbeschreibung";
+      maps.appendChild(icon("map-pin"));
       meta.appendChild(maps);
       if (concert.ticket_note) {
         meta.appendChild(document.createTextNode(" "));
@@ -209,7 +241,7 @@
       article.appendChild(meta);
 
       var actions = el("div", "tour-actions");
-      var ticket = el("a", "btn", "Tickets / Infos");
+      var ticket = el("a", "btn");
       ticket.href =
         "mailto:info@rehansyed.de?subject=" +
         encodeURIComponent(mailSubject(concert));
@@ -219,11 +251,12 @@
           formatDisplayDate(iso) +
           " per E-Mail anfragen"
       );
+      withIcon(ticket, "ticket", "Tickets / Infos");
       actions.appendChild(ticket);
 
       var icsBlob = buildIcs(concert);
       if (icsBlob) {
-        var cal = el("a", "btn btn-ghost", "In Kalender speichern");
+        var cal = el("a", "btn btn-ghost");
         cal.href = URL.createObjectURL(icsBlob);
         cal.download =
           "FUSSISSIMO-" + dateKey + ".ics";
@@ -231,6 +264,7 @@
           "aria-label",
           "Konzert am " + formatDisplayDate(iso) + " in den Kalender speichern"
         );
+        withIcon(cal, "calendar-plus", "In Kalender speichern");
         actions.appendChild(cal);
       }
       article.appendChild(actions);
@@ -400,6 +434,7 @@
         }
       });
     organize();
+    refreshIcons(document.querySelector(".tour-page") || document.body);
   }
 
   fetch("data/concerts.json")

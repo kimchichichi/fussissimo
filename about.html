@@ -11,17 +11,25 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="index.css?v=20260801sideways" />
-  <link rel="stylesheet" href="media.css?v=20260801sideways" />
+  <link rel="stylesheet" href="index.css?v=20260801icons" />
+  <link rel="stylesheet" href="media.css?v=20260801icons" />
 </head>
-<body class="has-mobile-nav">
+<body>
   <div class="topbar">
     <a class="topbar-brand wordmark" href="index.html" aria-label="Zur Startseite">FUSSISSIMO</a>
-    <nav class="nav" aria-label="Hauptnavigation">
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menü öffnen">
+    <span class="nav-toggle-box" aria-hidden="true">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </span>
+    </button>
+    <nav class="nav" id="site-nav" aria-label="Hauptnavigation">
       <a href="index.html#trio">Trio</a>
       <a href="listen.html">Playlist</a>
       <a href="about.html" aria-current="page">Musiker</a>
       <a href="tour.html">Konzerte</a>
+      <a href="galerie.html">Galerie</a>
       <a href="kontakt.html">Kontakt</a>
     </nav>
   </div>
@@ -55,7 +63,7 @@
           </div>
           <span class="name">Rehan Syed</span>
           <span class="role">Gitarre &amp; Komposition</span>
-          <span class="more" aria-hidden="true">Profil →</span>
+          <span class="more" aria-hidden="true">Profil <i data-lucide="arrow-right"></i></span>
         </a>
         <a
           class="member-card"
@@ -69,7 +77,7 @@
           </div>
           <span class="name">Harald Oeler</span>
           <span class="role">Akkordeon</span>
-          <span class="more" aria-hidden="true">Profil →</span>
+          <span class="more" aria-hidden="true">Profil <i data-lucide="arrow-right"></i></span>
         </a>
         <a
           class="member-card"
@@ -83,7 +91,7 @@
           </div>
           <span class="name">Simon Ort</span>
           <span class="role">Kontrabass</span>
-          <span class="more" aria-hidden="true">Profil →</span>
+          <span class="more" aria-hidden="true">Profil <i data-lucide="arrow-right"></i></span>
         </a>
       </div>
 
@@ -103,22 +111,19 @@
         <p class="pitch">Gypsy-Ethno-Jazz Trio · Buchung</p>
         <p class="contacts">
           <a href="tel:+491776007095">+49 177 6007095</a> ·
-          <a href="mailto:info@rehansyed.de">info@rehansyed.de</a>
+          <a href="mailto:info@rehansyed.de">info@rehansyed.de</a> ·
+          <a href="https://www.instagram.com/fussissimo" target="_blank" rel="noopener noreferrer">Instagram</a>
         </p>
       </div>
       <a class="btn" href="kontakt.html">Kontakt</a>
     </div>
     <p class="footer-meta">
-      <a href="index.html#trio">← Trio</a> · <a href="galerie.html">Galerie</a>
+      <a class="icon-link" href="index.html#trio"><i data-lucide="arrow-left"></i><span>Trio</span></a> · <a href="galerie.html">Galerie</a>
     </p>
   </footer>
 
-  <nav class="mobile-nav" aria-label="Mobilnavigation">
-    <a href="index.html#trio">Trio</a>
-    <a href="listen.html">Playlist</a>
-    <a href="about.html" aria-current="page">Musiker</a>
-    <a href="tour.html">Konzerte</a>
-    <a href="kontakt.html">Kontakt</a>
-  </nav>
+  <script src="https://unpkg.com/lucide@0.511.0" defer></script>
+  <script src="icons.js?v=20260801icons" defer></script>
+  <script src="nav.js?v=20260801hamb3" defer></script>
 </body>
 </html>

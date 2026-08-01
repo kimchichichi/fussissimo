@@ -11,23 +11,31 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../index.css?v=20260801ls02" />
-  <link rel="stylesheet" href="../media.css?v=20260801pub" />
+  <link rel="stylesheet" href="../index.css?v=20260801icons" />
+  <link rel="stylesheet" href="../media.css?v=20260801icons" />
 </head>
-<body class="has-mobile-nav">
+<body>
   <div class="topbar">
     <a class="topbar-brand wordmark" href="../index.html" aria-label="Zur Startseite">FUSSISSIMO</a>
-    <nav class="nav" aria-label="Hauptnavigation">
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menü öffnen">
+    <span class="nav-toggle-box" aria-hidden="true">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </span>
+    </button>
+    <nav class="nav" id="site-nav" aria-label="Hauptnavigation">
       <a href="../index.html#trio">Trio</a>
       <a href="../listen.html">Playlist</a>
       <a href="../about.html" aria-current="page">Musiker</a>
       <a href="../tour.html">Konzerte</a>
+      <a href="../galerie.html">Galerie</a>
       <a href="../kontakt.html">Kontakt</a>
     </nav>
   </div>
 
   <header class="page-header page-header--solo">
-    <a class="back-link" href="../about.html">← Musiker</a>
+    <a class="back-link" href="../about.html"><i data-lucide="arrow-left"></i><span>Musiker</span></a>
   </header>
 
   <section class="profile" aria-labelledby="musician-name">
@@ -48,9 +56,9 @@
           Gitarrist und Komponist — Gypsy Jazz, Weltmusik, Eigenkompositionen mit orientalischen und lateinamerikanischen Farben.
         </p>
         <div class="profile-links">
-          <a class="btn link-ext" href="https://www.rehansyed.com" target="_blank" rel="noopener">Website</a>
-          <a class="btn btn-ghost link-ext" href="https://www.youtube.com/playlist?list=PLfBhGm8pyfD8qIBHOxeYxpnQo5vYlHNBR" target="_blank" rel="noopener">YouTube</a>
-          <a class="btn btn-ghost" href="mailto:info@rehansyed.de?subject=Anfrage%20Rehan%20Syed%20%2F%20FUSSISSIMO">E-Mail</a>
+          <a class="btn btn-with-icon link-ext" href="https://www.rehansyed.com" target="_blank" rel="noopener"><i data-lucide="external-link"></i><span>Website</span></a>
+          <a class="btn btn-ghost btn-with-icon link-ext" href="https://www.youtube.com/playlist?list=PLfBhGm8pyfD8qIBHOxeYxpnQo5vYlHNBR" target="_blank" rel="noopener"><i data-lucide="external-link"></i><span>YouTube</span></a>
+          <a class="btn btn-ghost btn-with-icon" href="mailto:info@rehansyed.de?subject=Anfrage%20Rehan%20Syed%20%2F%20FUSSISSIMO"><i data-lucide="mail"></i><span>E-Mail</span></a>
         </div>
       </div>
 
@@ -77,16 +85,12 @@
   </section>
 
   <nav class="profile-siblings" aria-label="Weitere Musiker">
-    <a href="simonort.html"><span class="sib-dir" aria-hidden="true">←</span> Simon Ort</a>
-    <a href="haraldoeler.html">Harald Oeler <span class="sib-dir" aria-hidden="true">→</span></a>
+    <a href="simonort.html"><span class="sib-dir" aria-hidden="true"><i data-lucide="chevron-left"></i></span> Simon Ort</a>
+    <a href="haraldoeler.html">Harald Oeler <span class="sib-dir" aria-hidden="true"><i data-lucide="chevron-right"></i></span></a>
   </nav>
 
-  <nav class="mobile-nav" aria-label="Mobilnavigation">
-    <a href="../index.html#trio">Trio</a>
-    <a href="../listen.html">Playlist</a>
-    <a href="../about.html" aria-current="page">Musiker</a>
-    <a href="../tour.html">Konzerte</a>
-    <a href="../kontakt.html">Kontakt</a>
-  </nav>
+  <script src="https://unpkg.com/lucide@0.511.0" defer></script>
+  <script src="../icons.js?v=20260801icons" defer></script>
+  <script src="../nav.js?v=20260801hamb3" defer></script>
 </body>
 </html>

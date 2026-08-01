@@ -11,17 +11,25 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="index.css?v=20260801ls02" />
-  <link rel="stylesheet" href="media.css?v=20260801pub" />
+  <link rel="stylesheet" href="index.css?v=20260801icons" />
+  <link rel="stylesheet" href="media.css?v=20260801icons" />
 </head>
-<body class="has-mobile-nav">
+<body>
   <div class="topbar">
     <a class="topbar-brand wordmark" href="index.html" aria-label="Zur Startseite">FUSSISSIMO</a>
-    <nav class="nav" aria-label="Hauptnavigation">
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menü öffnen">
+    <span class="nav-toggle-box" aria-hidden="true">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </span>
+    </button>
+    <nav class="nav" id="site-nav" aria-label="Hauptnavigation">
       <a href="index.html#trio">Trio</a>
       <a href="listen.html">Playlist</a>
       <a href="about.html">Musiker</a>
       <a href="tour.html">Konzerte</a>
+      <a href="galerie.html" aria-current="page">Galerie</a>
       <a href="kontakt.html">Kontakt</a>
     </nav>
   </div>
@@ -31,8 +39,8 @@
       <h1>Galerie</h1>
       <p>Pressefotos · © Kat Schulze</p>
       <div class="btn-row" style="justify-content:flex-start;margin-top:0.75rem">
-        <a class="btn btn-ghost" href="image/fussissimo.webp" download>Gruppenfoto</a>
-        <a class="btn btn-ghost" href="mailto:info@rehansyed.de?subject=Pressefotos%20FUSSISSIMO">HD anfragen</a>
+        <a class="btn btn-ghost btn-with-icon" href="image/fussissimo.webp" download><i data-lucide="download"></i><span>Gruppenfoto</span></a>
+        <a class="btn btn-ghost btn-with-icon" href="mailto:info@rehansyed.de?subject=Pressefotos%20FUSSISSIMO"><i data-lucide="mail"></i><span>HD anfragen</span></a>
       </div>
     </div>
   </header>
@@ -50,22 +58,15 @@
   </section>
 
   <div id="myModal" class="modal" role="dialog" aria-modal="true" aria-label="Bildansicht">
-    <button type="button" class="close" aria-label="Schließen">&times;</button>
+    <button type="button" class="close" aria-label="Schließen"><i data-lucide="x"></i></button>
     <div class="modal-content"><img id="modalImage" alt="" /></div>
     <div class="modal-nav">
-      <button type="button" class="btn" id="prevBtn">Zurück</button>
-      <button type="button" class="btn" id="nextBtn">Weiter</button>
+      <button type="button" class="btn btn-with-icon" id="prevBtn"><i data-lucide="chevron-left"></i><span>Zurück</span></button>
+      <button type="button" class="btn btn-with-icon" id="nextBtn"><span>Weiter</span><i data-lucide="chevron-right"></i></button>
     </div>
   </div>
 
 
-  <nav class="mobile-nav" aria-label="Mobilnavigation">
-    <a href="index.html#trio">Trio</a>
-    <a href="listen.html">Playlist</a>
-    <a href="about.html">Musiker</a>
-    <a href="tour.html">Konzerte</a>
-    <a href="kontakt.html">Kontakt</a>
-  </nav>
 
   <script>
     const modal = document.getElementById("myModal");
@@ -112,5 +113,8 @@
       touchX = null;
     }, { passive: true });
   </script>
+  <script src="https://unpkg.com/lucide@0.511.0" defer></script>
+  <script src="icons.js?v=20260801icons" defer></script>
+  <script src="nav.js?v=20260801hamb3" defer></script>
 </body>
 </html>

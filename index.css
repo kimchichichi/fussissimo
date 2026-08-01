@@ -94,8 +94,7 @@ a:focus:not(:focus-visible) {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: color-mix(in srgb, var(--cream) 90%, transparent);
-  backdrop-filter: blur(10px);
+  background: var(--cream);
   border-bottom: 1px solid var(--blue-soft);
   padding: 0.7rem 1.35rem;
   display: flex;
@@ -121,6 +120,9 @@ a:focus:not(:focus-visible) {
   display: inline-flex;
   align-items: center;
   z-index: 1;
+  transition:
+    opacity 0.35s ease,
+    transform 0.4s cubic-bezier(0.2, 0.85, 0.2, 1);
 }
 
 .topbar-brand:hover {
@@ -194,9 +196,47 @@ a:focus:not(:focus-visible) {
   text-align: left;
 }
 
+.icon,
+svg.lucide {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  vertical-align: -0.125em;
+  stroke: currentColor;
+  fill: none;
+}
+
+.btn .icon,
+.btn svg.lucide {
+  width: 1.05em;
+  height: 1.05em;
+}
+
+.btn-with-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45em;
+}
+
+.icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35em;
+  text-decoration: none;
+}
+
+.icon-link .icon,
+.icon-link svg.lucide {
+  width: 1.05em;
+  height: 1.05em;
+}
+
 .back-link {
   display: inline-flex;
   align-items: center;
+  gap: 0.35em;
   min-height: 44px;
   margin-bottom: 0.35rem;
   font-size: 0.72rem;
@@ -644,18 +684,32 @@ a.meta-card:hover {
 .tour-meta {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
   gap: 0.35rem 0.85rem;
   margin: 0.15rem 0 0;
   text-transform: none;
 }
 
 .tour-maps {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-decoration: underline;
-  text-underline-offset: 0.22em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  min-width: 44px;
+  min-height: 44px;
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.tour-maps .icon,
+.tour-maps svg.lucide {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.tour-maps:hover {
+  color: color-mix(in srgb, var(--blue) 72%, black);
 }
 
 .tour-ticket-note {
@@ -676,6 +730,10 @@ a.meta-card:hover {
 
 .tour-actions .btn {
   white-space: nowrap;
+}
+
+.tour-actions .btn.btn-with-icon {
+  white-space: normal;
 }
 
 .badge {
@@ -768,10 +826,17 @@ a.meta-card:hover {
   color: var(--muted);
 }
 
-.link-ext::after {
-  content: " ↗";
-  font-size: 0.85em;
-  letter-spacing: 0;
+.link-ext {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+}
+
+.link-ext .icon,
+.link-ext svg.lucide {
+  width: 0.85em;
+  height: 0.85em;
+  opacity: 0.75;
 }
 
 .link-ext--archive {
@@ -912,18 +977,27 @@ a.meta-card:hover {
 
 .track-list .play-ico {
   width: 1.4rem;
+  height: 1.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   opacity: 0.45;
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   flex-shrink: 0;
   transition: opacity 0.2s, transform 0.2s, color 0.2s;
+}
+
+.track-list .play-ico .icon,
+.track-list .play-ico svg.lucide {
+  width: 0.95em;
+  height: 0.95em;
 }
 
 .track-list li.active .play-ico {
   opacity: 1;
   color: var(--blue);
   transform: scale(1.12);
-  font-weight: 800;
 }
 
 .track-name {
@@ -1096,7 +1170,10 @@ a.meta-card:hover {
 }
 
 .member-card .more {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25em;
   margin-top: 0.55rem;
   font-size: 0.62rem;
   font-weight: 800;
@@ -1234,12 +1311,19 @@ a.meta-card:hover {
 
 /* Touch / coarse pointer: show color by default */
 @media (hover: none), (pointer: coarse) {
-  .profile .portrait .portrait-color {
+  .profile .portrait .portrait-color,
+  .member-card .portrait .portrait-color {
     opacity: 1;
   }
 
-  .profile .portrait img:not(.portrait-color) {
+  .profile .portrait img:not(.portrait-color),
+  .member-card .portrait img:not(.portrait-color) {
     opacity: 0;
+  }
+
+  .member-card .more {
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -1355,7 +1439,15 @@ a.meta-card:hover {
 }
 
 .profile-siblings .sib-dir {
+  display: inline-flex;
+  align-items: center;
   font-weight: 800;
+}
+
+.profile-siblings .sib-dir .icon,
+.profile-siblings .sib-dir svg.lucide {
+  width: 0.95em;
+  height: 0.95em;
 }
 
 .page-header--solo > .back-link {
@@ -1440,7 +1532,7 @@ a.meta-card:hover {
   top: 12px;
   right: 20px;
   color: #fff;
-  font-size: 2.4rem;
+  font-size: 1.35rem;
   cursor: pointer;
   line-height: 1;
   min-width: 44px;
@@ -1450,6 +1542,16 @@ a.meta-card:hover {
   background: none;
   border: none;
   text-transform: none;
+}
+
+.modal .close .icon,
+.modal .close svg.lucide {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.modal-nav .btn.btn-with-icon {
+  min-width: 7.5rem;
 }
 
 .modal-nav {
@@ -1563,13 +1665,29 @@ a.meta-card:hover {
 
 .contact-action {
   display: grid;
-  gap: 0.3rem;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 0.75rem;
+  row-gap: 0.3rem;
+  align-items: center;
   padding: 0.9rem 1rem;
   border: 1.5px solid var(--blue);
   text-decoration: none;
   color: var(--blue);
   transition: background 0.2s, color 0.2s;
   min-height: 44px;
+}
+
+.contact-action .contact-ico {
+  grid-row: 1 / span 2;
+  display: inline-flex;
+  font-size: 1.15rem;
+}
+
+.contact-action .contact-ico .icon,
+.contact-action .contact-ico svg.lucide {
+  width: 1.15rem;
+  height: 1.15rem;
 }
 
 .contact-action:hover {
@@ -1584,6 +1702,7 @@ a.meta-card:hover {
 
 .contact-action .contact-label,
 .contact-address .contact-label {
+  grid-column: 2;
   font-size: 0.62rem;
   font-weight: 800;
   letter-spacing: 0.16em;
@@ -1592,6 +1711,7 @@ a.meta-card:hover {
 }
 
 .contact-action .contact-value {
+  grid-column: 2;
   font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -1600,11 +1720,30 @@ a.meta-card:hover {
 
 .contact-address {
   display: grid;
-  gap: 0.3rem;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 0.75rem;
+  row-gap: 0.3rem;
+  align-items: start;
   font-style: normal;
 }
 
+.contact-address .contact-ico {
+  grid-row: 1 / span 2;
+  display: inline-flex;
+  margin-top: 0.15rem;
+  font-size: 1.15rem;
+  color: var(--blue);
+}
+
+.contact-address .contact-ico .icon,
+.contact-address .contact-ico svg.lucide {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
 .contact-address-link {
+  grid-column: 2;
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -1714,44 +1853,93 @@ a.meta-card:hover {
   display: block;
 }
 
-body.has-mobile-nav #scrollToTopBtn {
-  bottom: calc(72px + env(safe-area-inset-bottom));
+/* ——— Hamburger (shown ≤991px) ——— */
+.nav-toggle {
+  display: none;
+  position: relative;
+  z-index: 70;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--blue);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.35s cubic-bezier(0.2, 0.85, 0.2, 1);
+}
+
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.nav-toggle:active {
+  transform: scale(0.92);
+}
+
+.nav-toggle-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 22px;
+  transition: transform 0.45s cubic-bezier(0.68, -0.45, 0.27, 1.35);
+}
+
+.nav-toggle-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+  transition:
+    transform 0.4s cubic-bezier(0.68, -0.45, 0.27, 1.35),
+    opacity 0.25s ease,
+    width 0.35s ease;
+  transform-origin: center;
+}
+
+.nav-toggle-bar:nth-child(2) {
+  width: 70%;
+  margin-left: auto;
+}
+
+body.nav-open .nav-toggle-box {
+  transform: rotate(90deg);
+}
+
+body.nav-open .nav-toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+body.nav-open .nav-toggle-bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+  width: 100%;
+}
+
+body.nav-open .nav-toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+body.nav-open .topbar-brand {
+  opacity: 0;
+  transform: translateY(-50%) translateX(-10px);
+  pointer-events: none;
+}
+
+@media (max-width: 991px) {
+  body.nav-open .topbar-brand {
+    transform: translateX(-12px);
+  }
 }
 
 .mobile-nav {
   display: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 60;
-  background: var(--cream);
-  border-top: 1px solid var(--blue-soft);
-  padding: 0.25rem 0.4rem calc(0.25rem + env(safe-area-inset-bottom));
-  justify-content: space-around;
-}
-
-.mobile-nav a {
-  flex: 1;
-  text-align: center;
-  font-size: 0.58rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-decoration: none;
-  padding: 0.5rem 0.15rem;
-  min-height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.mobile-nav a[aria-current="page"] {
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-}
-
-body.has-mobile-nav {
-  padding-bottom: calc(64px + env(safe-area-inset-bottom));
 }
 
 @keyframes rise {
@@ -1790,8 +1978,13 @@ body.home .cover-nav {
   z-index: 40;
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 1.1rem 1rem;
   pointer-events: none;
+}
+
+body.home .cover-nav .nav-toggle {
+  pointer-events: auto;
 }
 
 body.home .cover-nav nav {
@@ -1956,11 +2149,19 @@ body.home .cover-hint {
 }
 
 body.home .cover-hint-arrow {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-size: 0.85rem;
   letter-spacing: 0;
   line-height: 1;
   opacity: 0.9;
+}
+
+body.home .cover-hint-arrow .icon,
+body.home .cover-hint-arrow svg.lucide {
+  width: 1.1em;
+  height: 1.1em;
 }
 
 body.home .stack-btn:hover .cover-hint,
@@ -2023,10 +2224,11 @@ body.home .back-cover {
   background: var(--cream);
   color: var(--blue);
   font-size: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   line-height: 1;
-  display: grid;
-  place-items: center;
 }
 
 body.home .back-cover:focus-visible {
@@ -2158,18 +2360,23 @@ body.home.is-open .cover-nav {
   opacity: 0.35;
 }
 
+body.home.is-open .cover-nav .nav-toggle {
+  opacity: 1;
+}
+
 @media (max-width: 700px) {
   body.home .cover-nav {
-    padding: 0.75rem 0.5rem;
+    padding: 0.65rem 0.75rem;
+    opacity: 1;
   }
 
-  body.home .cover-nav nav {
-    gap: 0.25rem 0.75rem;
+  body.home.is-open .cover-nav {
+    opacity: 1;
   }
 
-  body.home .cover-nav a {
-    font-size: 0.58rem;
-    letter-spacing: 0.12em;
+  body.home .screen-trio {
+    padding-top: 3.5rem;
+    padding-bottom: 1.5rem;
   }
 
   body.home .stack-logo {
@@ -2178,13 +2385,50 @@ body.home.is-open .cover-nav {
     line-height: 0.81;
   }
 
-  body.home .trio-bio {
-    -webkit-line-clamp: 6;
-    font-size: 0.58rem;
+  body.home .members-line {
+    font-size: clamp(0.55rem, 2.8vw, 0.68rem);
+    letter-spacing: 0.08em;
+    padding: 0 0.75rem;
+    text-align: center;
   }
 
-  body.home .screen-trio {
-    padding-top: 3.25rem;
+  body.home .trio-logo {
+    width: min(88vw, 280px);
+    font-size: clamp(2.1rem, 11vw, 3.2rem);
+    white-space: normal;
+  }
+
+  body.home .trio-bio {
+    -webkit-line-clamp: 7;
+    font-size: clamp(0.68rem, 3.2vw, 0.78rem);
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  body.home .trio-links a {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+  }
+
+  body.home .screen {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  body.home .cover-hint {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+  }
+
+  body.home .trio-photo img {
+    aspect-ratio: 16 / 10;
+    max-height: min(36vh, 260px);
+  }
+
+  body.home .back-cover {
+    top: 0.75rem;
+    left: 0.75rem;
   }
 }
 
