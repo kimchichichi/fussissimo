@@ -924,6 +924,11 @@
     align-items: center;
   }
 
+  .trio-detail {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
   .profile {
     grid-template-columns: 1fr;
     gap: 1.25rem;

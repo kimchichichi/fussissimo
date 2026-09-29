@@ -1605,6 +1605,77 @@ a.meta-card:hover {
   margin-bottom: 0;
 }
 
+/* Trio detail */
+.trio-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: 1.75rem 2.25rem;
+  align-items: start;
+  max-width: 1080px;
+}
+
+.trio-detail-photo {
+  margin: 0;
+}
+
+.trio-detail-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1.5px solid var(--blue);
+}
+
+.trio-detail-photo figcaption {
+  margin-top: 0.45rem;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.trio-detail-copy p {
+  font-size: 0.84rem;
+  font-weight: 500;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.95rem;
+  text-transform: none;
+}
+
+.trio-detail-copy .lead {
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.03em;
+}
+
+.trio-detail-copy a {
+  color: inherit;
+}
+
+.trio-detail-members {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.15rem;
+  margin: 0.15rem 0 1.15rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--blue-soft);
+}
+
+.trio-detail-members a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+
+.trio-detail-members a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.28em;
+}
+
 /* News */
 .news-block {
   padding: 1.15rem 0;
